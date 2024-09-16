@@ -1,0 +1,39 @@
+name: Lint And Compile
+on: pull_request
+jobs:
+  lint-and-compile:
+    name: Lint And Compile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ChkTeX
+        uses: j2kun/chktex-action@v1.0.4
+      - name: Run TeXtidote
+        uses: ChiefGokhlayeh/textidote-action@v5
+        id: textidote
+        with:
+          root_file: src/main.tex
+      - name: Upload TeXtidote Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report.html
+          path: report.html
+      - name: Check If TeXtidote Reports Warnings
+        if: ${{ steps.textidote.outputs.num_warnings != 0 }}
+        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
+      - name: Compile
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: src/
+          args: ''
+      - name: Set Environment Variables
+        run: echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+      - name: Rename PDF
+        run: sudo mv out/main.pdf "out/${{ github.head_ref }}-${{ env.sha_short }}.pdf"
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ github.head_ref }}-${{ env.sha_short }}.pdf"
+          path: "out/${{ github.head_ref }}-${{ env.sha_short }}.pdf"

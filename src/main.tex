@@ -1,0 +1,75 @@
+% Preamble
+\documentclass[11pt]{report}
+
+% Packages
+\usepackage[a4paper]{geometry}
+\usepackage[english]{babel}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\usepackage{hyphenat}
+\usepackage{csquotes}
+\usepackage[indent=20pt]{parskip}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{aaufrontmatter}
+
+% textidote: ignore begin
+\useunder{\uline}{\ul}{}
+% textidote: ignore end
+
+% textidote: ignore begin
+
+% Bibliography
+
+% Configuration
+\graphicspath{ {./images/} }
+
+\hypersetup{pdfborder=0 0 0}
+
+% textidote: ignore end
+
+% Document
+\title{}
+\subtitle{}
+\theme{Software Engineering}
+\semester{Autumn}
+\groupnumber{6}
+\groupmembers{
+    Kristiyan Mariyan Georgiev,
+    Mads Heilmann,
+    Martin Kedmenec,
+    Sebastian Hemmer Bech Mygind,
+    Simon Woidemann,
+    Freja Johannesen
+}
+\supervisors{Tung Kieu}
+\department{Software}
+\abstract{}
+
+\begin{document}
+    % Title
+    \maketitle
+
+    % Table of Contents
+    % textidote: ignore begin
+    \tableofcontents
+    % textidote: ignore end
+
+    % Commenting out until it's ready
+    % \makeaaupreface{This is the preface.}
+
+    % Main Content
+
+    % Appendix
+    \appendix
+
+    % Bibliography
+    \printbibliography[heading=bibintoc]
+\end{document}

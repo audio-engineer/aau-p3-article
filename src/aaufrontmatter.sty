@@ -1,0 +1,219 @@
+% textidote: ignore begin
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aaufrontmatter}[2024/03/12 AAU Front Matter]
+
+\RequirePackage{calc}
+\RequirePackage{lastpage}
+\RequirePackage{xparse}
+
+\ExplSyntaxOn
+\newcommand{\printlist}[1]
+{
+    \begin{enumerate}
+    \clist_map_inline:nn { #1 } { \item ##1 }
+    \end{enumerate}
+}
+\ExplSyntaxOff
+
+\newcommand{\@subtitle}{\relax}
+\newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+
+\newcommand{\@theme}{\relax}
+\newcommand{\theme}[1]{\renewcommand{\@theme}{#1}}
+
+\newcommand{\@semester}{\relax}
+\newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
+
+\newcommand{\@department}{\relax}
+\newcommand{\department}[1]{\renewcommand{\@department}{#1}}
+
+\newcommand{\@supervisors}{\relax}
+\newcommand{\supervisors}[1]{\renewcommand{\@supervisors}{\printlist{#1}}}
+
+\newcommand{\@groupnumber}{\relax}
+\newcommand{\groupnumber}[1]{\renewcommand{\@groupnumber}{#1}}
+
+\newcommand{\@groupmembers}{\relax}
+\newcommand{\groupmembers}[1]{\renewcommand{\@groupmembers}{\printlist{#1}}}
+
+\newcommand{\@abstract}{\relax}
+\renewcommand{\abstract}[1]{\renewcommand{\@abstract}{#1}}
+
+\newcommand{\aautitlepage}[3]{
+        {
+        \ifx
+            \titlepageleftcolumnwidth\undefined
+            \newlength{\titlepageleftcolumnwidth}
+            \newlength{\titlepagerightcolumnwidth}
+        \fi
+        \setlength{\titlepageleftcolumnwidth}{0.5\textwidth-\tabcolsep}
+        \setlength{\titlepagerightcolumnwidth}{\textwidth-2\tabcolsep-\titlepageleftcolumnwidth}
+        \thispagestyle{empty}
+        \noindent
+        \begin{tabular}{@{}ll@{}}
+        \parbox{\titlepageleftcolumnwidth}{
+            \includegraphics[width=0.9\titlepageleftcolumnwidth]{aau_logo_en}
+        } &
+        \parbox{\titlepagerightcolumnwidth}{\raggedleft\textsf\small
+        #2
+        }\bigskip \\
+        #1 &
+        \parbox[t]{\titlepagerightcolumnwidth}{
+            \textbf{Abstract:}\bigskip\par
+            \fbox{\parbox{\titlepagerightcolumnwidth-.15\fboxsep-2\fboxrule}{
+                #3
+            }}
+        } \\
+        \end{tabular}
+        \vfill
+        \noindent{\footnotesize\emph{The content of this report is freely available, but publication (with
+        reference) may only be pursued due to agreement with the author.}}
+        \clearpage
+    }
+}
+
+\newcommand{\englishprojectinfo}[8]{
+    \parbox[t]{\titlepageleftcolumnwidth}{
+        \textbf{Title:}\\ #1\bigskip\par
+        \textbf{Theme:}\\ #2\bigskip\par
+        \textbf{Project Period:}\\ #3\bigskip\par
+        \textbf{Project Group:}\\ Group #4\bigskip\par
+        \textbf{Participant(s):}#5\bigskip\par
+        \textbf{Supervisor(s):}#6\bigskip\par
+        \textbf{Page Numbers:}\\ #7\bigskip\par
+        \textbf{Date of Completion:}\\ #8
+    }
+}
+
+\makeatletter
+\renewcommand{\maketitle}{
+% First page
+    \addtolength{\hoffset}{0.5\evensidemargin-0.5\oddsidemargin}
+    \noindent
+    \begin{tabular}{@{}p{\textwidth}@{}}
+        \toprule[2pt]
+        \midrule
+        \vspace{0.2cm}
+        \begin{center}
+            \Huge{\textbf{
+                \@title
+            }}
+        \end{center}
+        \begin{center}
+            \Large{
+                \@subtitle
+            }
+        \end{center}
+        \vspace{0.2cm} \\
+        \midrule
+        \toprule[2pt]
+    \end{tabular}
+    \vspace{4 cm}
+    \begin{center}
+    {\large
+    Project Report
+    }
+        \\
+        \vspace{0.2cm}
+        {\Large
+        Group \@groupnumber
+        }
+    \end{center}
+    \vfill
+    \begin{center}
+        Aalborg University \\
+        \@department
+    \end{center}
+
+% Second page
+    \pdfbookmark[0]{English title page}{label:titlepage_en}
+
+    \aautitlepage{%
+        \englishprojectinfo{
+            \@title~\@subtitle
+        }{%
+            \@theme
+        }{%
+            \@semester~Semester 2024
+        }{%
+            \@groupnumber
+        }{%
+            \@groupmembers
+        }{%
+            \@supervisors
+        }{%
+            \pageref{LastPage}
+        }{%
+            \today
+        }%
+    }{%
+        \textbf{\@department}\\
+        Aalborg University\\
+        \href{https://www.aau.dk/}{https://www.aau.dk/}
+    }{%
+        \@abstract
+    }
+
+    \cleardoublepage
+}
+\makeatother
+
+\newcommand{\makeaaupreface}[1]{
+    \chapter*{Preface}
+    \addcontentsline{Section}{Preface}
+    \raggedright \hfill Aalborg University \today
+
+    \vspace{3em}
+
+    \noindent #1
+
+    \vspace{3cm}
+    \vfill\noindent
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.5pt}\\
+    Name \\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.45pt}\\
+    Name \\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \vspace{3\baselineskip}
+    \begin{center}
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.45pt}
+    Name \\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.5pt}
+    Name\\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \end{center}
+    \vspace{3\baselineskip}
+    \begin{center}
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.45pt}
+    Name \\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \rule{\textwidth}{0.45pt}
+    Name \\
+    {\footnotesize <mail>}
+    \end{minipage}
+    \end{center}
+}
+% textidote: ignore end
+\endinput
