@@ -1,0 +1,226 @@
+QuoteStyle = Logical
+TabSize = 8
+CmdSpaceStyle = Ignore
+
+CmdLine
+{
+}
+
+UserWarn
+{
+    \unknown
+    ChkTeX
+}
+[
+]
+
+UserWarnRegex
+{
+    (?!#Always! use! \nmid)\\not! *(\||\\mid)
+    (?!#-1:Capitalize! before! references)PCRE:\b(chapter|(sub)?section|theorem|lemma|proposition|corollary|appendix)~\\ref
+    (?!#1:Capitalize! before! references)POSIX:([^[:alnum:]]|^)(chapter|(sub)?section|theorem|lemma|proposition|corollary|appendix)~\\ref
+    (?!#-2:Use! \toprule,! \midrule,! or! \bottomrule! from! booktabs)\\hline
+    (?!#-2:Vertical! rules! in! tables! are! ugly)\\begin\{(array|tabularx?\*?)\}(\[.*\])?\{.*\|.*\}
+    (?!#-3:Optional! arguments! []! inside! optional! arguments! []! must! be! enclosed! in! {})PCRE:\[(?!![^\]\[{}]*{(?!![^\]\[{}]*}))[^\]]*\[
+}
+
+TeXInputs
+{
+}
+
+OutFormat
+{
+    %f%b%l%b%c%b%n%b%m!n
+    "%k %n in %f line %l: %m!n%r%s%t!n%u!n"
+    "%k %n in %f line %l: %m!n%r%i%s%I%t!n!n"
+    "!"%f!", line %l: %m!n"
+    "!"%f!", line %l: %m!n%r%s%t!n%u!n"
+    "%k %n in %f: %m!n%r%s%t!n%u!n"
+    "!"%f!", line %l.%c:(#%n) %m!n"
+}
+
+Silent
+{
+    \rm \em \bf \it \sl \sf \sc \tt \selectfont
+    \rmfamily \sffamily \ttfamily \mdseries \bfseries \itshape
+    \slshape \scshape \relax
+    \vskip \pagebreak \nopagebreak
+    \textrm \textem \textbf \textit \textsl \textsf \textsc \texttt
+    \clearpage \ddots \dotfill \flushbottom \fussy \indent \linebreak
+    \onecolumn \pagebreak \pushtabs \poptabs \scriptsize \sloppy
+    \twocolumn \vdots
+    \today \kill \newline \thicklines \thinlines
+    \columnsep \space \item \tiny \footnotesize \small \normalsize
+    \normal \large \Large \LARGE \huge \Huge \printindex
+    \newpage \listoffigures \listoftables \tableofcontents
+    \maketitle \makeindex
+    \hline \hrule \vrule
+    \centering
+    \noindent \expandafter
+    \makeatletter \makeatother
+    \columnseprule
+    \textwidth \textheight \hsize \vsize
+    \if \fi \else
+    \csname \endcsname
+    \z@ \p@ \@warning \typeout
+    \dots \ldots \input \endinput \nextline \leavevmode \cdots
+    \appendix \listfiles \and \quad \bigskip \medskip \smallskip
+    \hskip \vfill \vfil \hfill \hfil \topmargin \oddsidemargin
+    \frenchspacing \nonfrenchspacing
+    \begingroup \endgroup \par
+    \vrefwarning \upshape \headheight \headsep \hoffset \voffset
+    \cdot \qquad \left \right \qedhere \xspace
+    \addlinespace \cr \fill \frontmatter
+    \toprule \midrule \bottomrule
+}[
+    \\start.* \\stop.*
+]
+
+HyphDash
+{
+    1 3
+}
+
+NumDash
+{
+    2
+}
+
+WordDash
+{
+    3
+}
+
+DashExcpt
+{
+    Birch--Swinnerton-Dyer
+}
+
+WipeArg
+{
+    \label:{} \ref:{} \eqref:{} \vref:{} \pageref:{} \index:[]{}
+    \cite:[][]{} \nocite:{}
+    \input:{} \verbatiminput:[]{} \listinginput:[]{}{}
+    \graphicspath:{}
+    \verbatimtabinput:[]{} \include:{} \includeonly:{}
+    \bibitem:[]{}
+    \cline:{} \cmidrule:[](){}
+    \href:{}{}
+    \cref:*{} \cpageref:*{} \crefrange:*{}{} \cpagerefrange:*{}{}
+    \Cref:*{} \Cpageref:*{} \Crefrange:*{}{} \Cpagerefrange:*{}{}
+    \citet:*[][]{} \citep:*[][]{} \citealt:*{} \citealp:*[]{} \citeauthor:*{}
+    \Citet:*[][]{} \Citep:*[][]{} \Citealt:*{} \Citealp:*[]{} \Citeauthor:{}
+    \citetext:{} \citeyear:*{} \citeyearpar:{}
+    \autocite:*[][]{} \autocites:*[][]{} \Autocite:*[][]{} \Autocites:*[][]{}
+    \parencite:*[][]{} \parencites:*[][]{} \Parencite:*[][]{} \Parencites:*[][]{}
+    \footcite:*{} \footcites:*[][]{} \Footcite:*[][]{} \Footcites:*[][]{}
+    \textcite:*{} \textcites:*[][]{} \Textcite:*[][]{} \Textcites:*[][]{}
+    \citeauthor:*{} \citeauthors:*[][]{} \Citeauthor:*[][]{} \Citeauthors:*[][]{}
+    \citeyear:*{} \citeyears:*[][]{} \Citeyear:*[][]{} \Citeyears:*[][]{}
+    \citetitle:*{} \citetitles:*[][]{} \Citetitle:*[][]{} \Citetitles:*[][]{}
+    \textipa:{}
+    \directlua:{} \luaescapestring:{}
+}
+
+MathEnvir
+{
+    displaymath math eqnarray array equation
+    align alignat gather flalign multline
+    dmath dgroup darray
+}
+
+TextEnvir
+{
+    dsuspend
+}
+
+MathCmd
+{
+    \ensuremath
+}
+
+TextCmd
+{
+    \text \intertext \shortintertext \mbox \condition
+}
+
+VerbEnvir
+{
+    verbatim comment listing verbatimtab rawhtml errexam picture texdraw
+    filecontents pgfpicture tikzpicture minted lstlisting IPA
+}
+
+Abbrev
+{
+    1st. 2nd. 3rd. 4th.
+    Mr. Mrs. Miss. Ms. Dr. Prof. St.
+}
+[
+]
+
+IJAccent
+{
+    \hat \check \breve \acute \grave \tilde \bar \vec \dot \ddot
+    \' \` \^ \" \~ \= \. \u \v \H \t
+}
+
+Italic
+{
+    \it \em \sl \itshape \slshape
+}
+
+NonItalic
+{
+    \bf \rm \sf \tt \sc
+    \upshape
+}
+
+ItalCmd
+{
+}
+
+PostLink
+{
+    \index \label
+}
+
+NotPreSpaced
+{
+    \footnote \footnotemark \/
+}
+
+Linker
+{
+    \ref \vref \pageref \eqref \cite
+}
+
+CenterDots
+{
+    = + - \cdot \div & \times \geq \leq < >
+}
+
+LowDots
+{
+    . , ;
+}
+
+MathRoman
+{
+    log lg ln lim limsup liminf sin arcsin sinh cos arccos cosh tan
+    arctan tanh cot coth sec csc max min sup inf arg ker dim hom det
+    exp Pr gcd deg bmod pmod mod
+}
+
+Primitives
+{
+    \above \advance \catcode \chardef \closein \closeout \copy \count
+    \countdef \cr \crcr \csname \delcode \dimendef \dimen \divide
+    \expandafter \font \hskip \vskip \openout
+}
+
+NoCharNext
+{
+    \left:{}$ \right:{}$
+}
+
+VerbClear = "|"
