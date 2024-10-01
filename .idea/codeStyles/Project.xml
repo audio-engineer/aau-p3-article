@@ -150,5 +150,8 @@
         <pair source="c++m" header="" fileNamingConvention="NONE" />
       </extensions>
     </files>
+    <codeStyleSettings language="Latex">
+      <option name="WRAP_LONG_LINES" value="true" />
+    </codeStyleSettings>
   </code_scheme>
 </component>
