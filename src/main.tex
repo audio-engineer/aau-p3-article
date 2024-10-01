@@ -19,12 +19,10 @@
 \usepackage{booktabs}
 \usepackage{tcolorbox}
 \usepackage{aaufrontmatter}
+\usepackage[acronym]{glossaries}
 
 % textidote: ignore begin
 \useunder{\uline}{\ul}{}
-% textidote: ignore end
-
-% textidote: ignore begin
 
 % Bibliography
 
@@ -70,6 +68,12 @@
 
     % Appendix
     \appendix
+
+    % Glossaries
+    % textidote: ignore begin
+    \printglossary[type=\acronymtype]
+    \printglossary
+    % textidote: ignore end
 
     % Bibliography
     \printbibliography[heading=bibintoc]
