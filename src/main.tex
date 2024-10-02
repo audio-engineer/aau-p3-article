@@ -20,21 +20,20 @@
 \usepackage{tcolorbox}
 \usepackage{aaufrontmatter}
 \usepackage[acronym,toc]{glossaries}
-
-% textidote: ignore begin
-\useunder{\uline}{\ul}{}
-
-% Bibliography
+\usepackage{wrapfig}
 
 % Configuration
-\graphicspath{ {./images/} }
+\graphicspath{{./images/}}
+
+\useunder{\uline}{\ul}{}
 
 \hypersetup{pdfborder=0 0 0}
 
 % Glossary
 \input{glossary}
 
-% textidote: ignore end
+% Bibliography
+\addbibresource{problem-analysis/data-visualization.bib}
 
 % Document
 \title{}
@@ -59,9 +58,7 @@
     \maketitle
 
     % Table of Contents
-    % textidote: ignore begin
     \tableofcontents
-    % textidote: ignore end
 
     % Commenting out until it's ready
     % \makeaaupreface{This is the preface.}
@@ -73,10 +70,8 @@
     \appendix
 
     % Glossaries
-    % textidote: ignore begin
     \printglossary[type=\acronymtype]
     \printglossary{}
-    % textidote: ignore end
 
     % Bibliography
     \printbibliography[heading=bibintoc]
