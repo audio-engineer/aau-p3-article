@@ -1,3 +1,5 @@
 --check en
 --dict src/whitelist.txt
 --read-all
+--remove tcolorbox,wrapfigure
+--remove-macros pagebreak,hypersetup,useunder,tableofcontents,printglossary,acronymtype,newacronym
