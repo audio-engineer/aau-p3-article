@@ -12,12 +12,3 @@ Tung
 Kieu
 EPOS
 epos
-tcolorbox
-Tcolorbox
-epos
-printglossary
-acronymtype
-tableofcontents
-pdfborder
-ul
-pagebreak
