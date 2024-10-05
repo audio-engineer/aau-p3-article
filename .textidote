@@ -2,4 +2,4 @@
 --dict src/whitelist.txt
 --read-all
 --remove tcolorbox,wrapfigure
---remove-macros pagebreak,hypersetup,useunder,tableofcontents,printglossary,acronymtype,newacronym
+--remove-macros pagebreak,hypersetup,useunder,tableofcontents,printglossary,acronymtype,newacronym,textcquote
