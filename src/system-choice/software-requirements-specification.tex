@@ -1,15 +1,13 @@
-% textidote: ignore begin
 \section{Software Requirements Specification}\label{sec:software-requirements-specification}
-% textidote: ignore end
 
 For further clarification and alignment of features to prioritize the MoSCoW model is employed~\cite{hudaib2018}.
 Herein an overview of the requirements for the software is covered.
-\textbf{``Must-haves''} (Mo) include features that must be included in the software.
-\textbf{``Should-haves''} (S) include features that are desired and possible to implement, but are not prioritized
-due to time limitations.
+\textbf{``Must-haves''} (Mo) include features that must be included in the software for it to be functional.
+\textbf{``Should-haves''} (S) include features that are desired and possible to implement, but are not prioritized as
+highly as must-haves due to time limitations.
 \textbf{``Could-haves''} (Co) include features that are possible and valuable to implement but are not the main
 focus of the report.
-\textbf{``Won't-haves''} (W) include features that are out of scope.
+\textbf{``Won't-haves''} (W) include features that are out of scope and won't be implemented.
 
 Furthermore, the requirements are split into two different tables, functional- and non-functional requirements.
 Functional requirements describe what actions the system must be capable of performing.
@@ -17,7 +15,6 @@ Non-functional requirements, however, describe how the system must function~\cit
 This is done among other reasons to distinguish between functionality and quality attributes.
 By having these separated into different tables, it is easier to plan design decisions and maintain a clear overview.
 
-% textidote: ignore begin
 \begin{table}[H]
     \centering
     \resizebox{\columnwidth}{!}{%
@@ -27,21 +24,49 @@ By having these separated into different tables, it is easier to plan design dec
             & \textbf{MoSCoW annotation}
             & \textbf{Motivation}
             \\ \midrule
-            Functional requirement placeholder
+            Upload a~.csv-file
             & Mo
-            & {}
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
             \\ \midrule
-            Functional requirement placeholder
+            Create a user
+            & Mo
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
+            \\ \midrule
+            Delete a user
+            & Mo
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
+            \\ \midrule
+            Create a transaction
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Get a list of all transactions with a particular product ID
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Get a list of all transactions on a particular date
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Get a list of all customers
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Delete a transaction
             & S
-            & {}
+            & {WIP}
             \\ \midrule
-            Functional requirement placeholder
+            Update a user
+            & S
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
+            \\ \midrule
+            Update a transaction
             & Co
-            & {}
+            & {WIP}
             \\ \midrule
-            Functional requirement placeholder
+            Export of data to external file (e.g.\ CSV, JSON, etc.)
             & W
-            & {}
+            & {WIP}
             \\ \bottomrule
         \end{tabular}%
     }
@@ -51,10 +76,7 @@ By having these separated into different tables, it is easier to plan design dec
     The \textit{Motivation} column encompasses where in the report the motivation for the requirements is located.
     }\label{tab:functional-requirements-specification}
 \end{table}
-% textidote: ignore end
 
-
-% textidote: ignore begin
 \begin{table}[H]
     \centering
     \resizebox{\columnwidth}{!}{%
@@ -64,21 +86,77 @@ By having these separated into different tables, it is easier to plan design dec
             & \textbf{MoSCoW annotation}
             & \textbf{Motivation}
             \\ \midrule
-            Non-functional requirement placeholder
+            Data visualization (graphs and charts)
             & Mo
-            & {}
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
             \\ \midrule
-            Non-functional requirement placeholder
+            Usability in a tablet browser
+            & Mo
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
+            \\ \midrule
+            Data processing (raw data filtering and validation)
+            & Mo
+            & {WIP}
+            \\ \midrule
+            A database
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Ability to handle a small number of concurrent users
+            & Mo
+            & {WIP}
+            \\ \midrule
+            Intuitive and simplistic front-end design
             & S
-            & {}
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
             \\ \midrule
-            Non-functional requirement placeholder
+            Mapping product ID to custom product name
+            & S
+            & {\ul{\ref{sec:cultivating-new-ideas}}}
+            \\ \midrule
+            Well structured codebase
+            & S
+            & {WIP}
+            \\ \midrule
+            A fast and efficient frontend framework
+            & S
+            & {WIP}
+            \\ \midrule
+            A robust backend framework
+            & S
+            & {WIP}
+            \\ \midrule
+            Authentication via login
+            & S
+            & {WIP}
+            \\ \midrule
+            Authorization of users
+            & S
+            & {WIP}
+            \\ \midrule
+            Machine learning capabilities
             & Co
-            & {}
+            & {WIP}
             \\ \midrule
-            Non-functional requirement placeholder
+            Low response time
+            & Co
+            & {WIP}
+            \\ \midrule
+            User-interactive data visualization
+            & W
+            & {WIP}
+            \\ \midrule
+            Other security measures (encryption)
             & W
             & {}
+            \\ \midrule
+            Scalability
+            & W
+            & {\ul{\ref{sec:system-definition}}}
+            \\ \midrule
+            UI related semantic settings (color, language)
+            & W
+            & {\ul{\ref{sec:system-definition}}}
             \\ \bottomrule
         \end{tabular}%
     }
@@ -88,4 +166,3 @@ By having these separated into different tables, it is easier to plan design dec
     The \textit{Motivation} column encompasses where in the report the motivation for the requirements is located.
     }\label{tab:non-functional-requirements-specification}
 \end{table}
-% textidote: ignore end
