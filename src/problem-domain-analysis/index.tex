@@ -2,5 +2,31 @@
 \chapter{Problem Domain Analysis}\label{ch:problem-domain-analysis}
 % textidote: ignore end
 
+The following chapter will deal with the analysis and understanding of the problem domain.
+The aim of such an analysis is to answer the question:
+\textcquote[47]{mathiassen2018}{What information should the system deal with?}
+The answer to this question is crucial because the information that the future system will deal with decides the
+requirements and building blocks of the system.
+To find the answer to this question, we will first model the classes, objects and structures of the system, and the
+relationships and interaction between them.
+Such an analysis follows the core principle of
+\textcquote[47]{mathiassen2018}{[model] the real world as future users will see it.}
+
+First, in Section~\ref{sec:classes-objects-and-structure}, we will identify the classes, objects and structures between
+those classes and objects.
+A class diagram will clarify the connections between the individual elements, to depict their role in the problem domain
+system.
+
+In Section~\ref{sec:event-table} of this chapter, we will use an event table~\cite[52]{mathiassen2018} to describe and
+categorize the activities of specific class objects and how they interact with each other.
+
+Overall, the goal of the class diagram and the event table is to visualize the problem domain in a clear and unambiguous
+manner.
+The classes, objects and events that will be identified here will be evaluated by the criteria that they
+\textcquote[63]{mathiassen2018}{should refer to phenomena that future users will administrate, monitor, or control in
+their work.}
+The two visualizations will serve as a basis for all further analyses, and will play a crucial role later on in the
+design and implementation phase of the project.
+
 \input{problem-domain-analysis/classes-objects-and-structure}
 \input{problem-domain-analysis/event-table}
