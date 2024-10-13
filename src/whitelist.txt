@@ -14,8 +14,11 @@ EPOS
 epos
 MoSCoW
 Kaffe
+kaffe
 Vinbar
+vinbar
 understaffing
 overstaffing
 srs
 Mathiassen
+lowkey
