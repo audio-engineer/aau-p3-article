@@ -62,15 +62,21 @@ Figure~\ref{fig:actor-owner}: Actor specifications of the owner actor.
     \newline
 
     \noindent
-    \textbf{Characteristics:} The baristas are the employees that work in the caé.
+    \textbf{Characteristics:} The baristas are the employees that work in the café.
     They are responsible for serving the customers and keeping the café clean.
     The baristas are not expected to have any technical expertise.
     \newline
 
     \noindent
-    \textbf{Examples:} A barista logs into the system to check the sales data from the previous day.
-    They want to see how many customers visited the café and what products were sold.
-    They also want to upload the sales data from the cash register to the system.
+    \textbf{Example 1:} A barista logs into the system by typing in their credentials.
+    When done typing in their credentials, they are presented with the sales data on the dashboard.
+    They can see the sales data throughout the weeks and months.
+    \newline
+
+    \noindent
+    \textbf{Example 2:} A barista logs into the system by typing in their credentials.
+    They are looking to upload new sales data to the system.
+    They navigate to the upload button and select the file they want to upload.
 
     \noindent
     \rule{\textwidth}{0.04pt}\label{fig:actor-barista}
@@ -100,8 +106,12 @@ Figure~\ref{fig:actor-barista}: Actor specifications of the barista actor.
     \newline
 
     \noindent
-    \textbf{Examples:} When a user logs into the system using their username and password the cognito actor
+    \textbf{Example 1:} When a user logs into the system using their username and password the cognito actor
     authenticates the user and provides the system with the user's identity.
+
+    \noindent
+    \textbf{Example 2:} When a user provide the system with an invalid username or password the cognito actor
+    denies the user access to the system and gives them an error message.
 
     \noindent
     \rule{\textwidth}{0.4pt}\label{fig:actor-cognito}
