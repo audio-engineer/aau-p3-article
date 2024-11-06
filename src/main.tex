@@ -40,8 +40,8 @@
 \addbibresource{main.bib}
 \addbibresource{system-choice/software-requirements-specification.bib}
 \addbibresource{introduction/nova.bib}
-\addbibresource{miscellaneous/data-visualization.bib}
-\addbibresource{miscellaneous/state-of-the-art.bib}
+\addbibresource{front-end/data-visualization.bib}
+\addbibresource{state-of-the-art/google-analytics.bib}
 
 % Document
 \title{}
@@ -74,9 +74,8 @@
     % \makeaaupreface{This is the preface.}
 
     % Main Content
+
     % textidote: ignore begin
-
-
     \chapter{Introduction and Analysis}\label{ch:introduction-and-analysis}
     % textidote: ignore end
     \pagenumbering{arabic}
@@ -86,13 +85,14 @@
     \input{problem-domain-analysis/index}
     \input{application-domain-analysis/index}
 
-
     % textidote: ignore begin
-
-
     \chapter{Implementation}\label{ch:implementation}
     % textidote: ignore end
-    \input{miscellaneous/index}
+
+    \input{state-of-the-art/index}
+    \input{front-end/index}
+    \input{back-end/index}
+    \input{technologies/index}
 
     % Appendix
     \appendix
