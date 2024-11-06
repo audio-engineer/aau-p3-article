@@ -33,39 +33,37 @@ section about classes in Section~\ref{subsec:classes-objects-and-structure}.
 
 \begin{table}[h]
     \centering
-    \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{ccc}
-            \toprule
-            \textbf{Function name}
-            & \textbf{Type}
-            & \textbf{Complexity}
-            \\ \midrule
-            Find user information
-            & Read
-            & Simple
-            \\ \midrule
-            Find products by category
-            & Read
-            & Medium
-            \\ \midrule
-            Create user session
-            & Update
-            & Medium
-            \\ \midrule
-            Validate user session
-            & Compute
-            & Medium
-            \\ \midrule
-            Format data
-            & Compute
-            & Complex
-            \\ \midrule
-            Validate and process CSV file
-            & Compute
-            & Very complex
-            \\ \bottomrule
-        \end{tabular}%
-    }
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{Function name}
+        & \textbf{Type}
+        & \textbf{Complexity}
+        \\ \midrule
+        Find user information
+        & Read
+        & Simple
+        \\ \midrule
+        Find products by category
+        & Read
+        & Medium
+        \\ \midrule
+        Create user session
+        & Update
+        & Medium
+        \\ \midrule
+        Validate user session
+        & Compute
+        & Medium
+        \\ \midrule
+        Format data
+        & Compute
+        & Complex
+        \\ \midrule
+        Validate and process CSV file
+        & Compute
+        & Very complex
+        \\ \bottomrule
+    \end{tabular}%
     \caption{Table of all functions and their respective assigned types and complexities.
     Trivial functions are excluded.
     }\label{tab:functions}
@@ -78,39 +76,37 @@ the~\textit{Validate and process CSV file} function are further clarified.
 
 \begin{table}[h]
     \centering
-    \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{ccc}
-            \toprule
-            \textbf{Function name}
-            & \textbf{Type}
-            & \textbf{Complexity}
-            \\ \midrule
-            Validate CSV file type
-            & Read
-            & Simple
-            \\ \midrule
-            Handle exceptions
-            & Signal
-            & Simple
-            \\ \midrule
-            Save CSV contents
-            & Update
-            & Medium
-            \\ \midrule
-            Create additional meta-attributes
-            & Update
-            & Medium
-            \\ \midrule
-            Match CSV field to model
-            & Compute
-            & Medium
-            \\ \midrule
-            Check for duplicates
-            & Compute
-            & Medium
-            \\ \bottomrule
-        \end{tabular}%
-    }
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{Function name}
+        & \textbf{Type}
+        & \textbf{Complexity}
+        \\ \midrule
+        Validate CSV file type
+        & Read
+        & Simple
+        \\ \midrule
+        Handle exceptions
+        & Signal
+        & Simple
+        \\ \midrule
+        Save CSV contents
+        & Update
+        & Medium
+        \\ \midrule
+        Create additional meta-attributes
+        & Update
+        & Medium
+        \\ \midrule
+        Match CSV field to model
+        & Compute
+        & Medium
+        \\ \midrule
+        Check for duplicates
+        & Compute
+        & Medium
+        \\ \bottomrule
+    \end{tabular}%
     \caption{Table of all sub-functions and their respective type and complexity regarding the very complex parent
     function~\textit{Validate and process CSV file} seen in Table~\ref{tab:functions}.
     Trivial functions are excluded.
