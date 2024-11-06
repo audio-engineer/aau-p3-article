@@ -1,0 +1,39 @@
+\section{Testing}\label{sec:testing}
+Testing is an important part of production-grade code.
+It allows the developers to check that parts of the code behave as expected.
+The strictly correct implementation of code testing is~\acrfull{tdd}.
+In software development~\acrshort{tdd}, is a method where you design code around tests.
+This also means that if one were to truly do~\acrshort{tdd}, you would design tests for all functionality
+in your program, and then make code to pass the given tests.
+The authors deemed that extensive testing was not strictly needed for this project.
+Time constraints were also considered.
+
+Though~\acrshort{tdd} was not used for this project, there was still a need for testing.
+It was decided that unit tests were going to be implemented with a focus on the backend software, as
+it is here most of the critical functionality is.
+When creating unit tests, the authors chose to follow the~\acrfull{aaa} pattern, also called the Build Operate
+Check pattern~\cite{clean-code}.
+
+
+\begin{lstlisting}[
+    label={lst:aaa-test},
+    caption={Pseudocode that shows the~\acrshort{aaa} pattern for testing.},
+    captionpos=b,
+]
+    test() {
+        // Arrange
+        SomeState someState = new SomeState(foo);
+
+        // Act
+        someState.changeState(bar);
+
+        // Assert
+        assert(someState == expectedState);
+    }
+\end{lstlisting}
+
+As seen in listing~\ref{lst:aaa-test}, to use the~\acrshort{aaa} pattern,
+one would first set some state to a known state.
+Then you act on the state and transform it through some function, also called unit.
+We can finally assert that we get the expected state from the transformation, assert can be seen
+as the test passing if the expression returns true, and failing if false.
