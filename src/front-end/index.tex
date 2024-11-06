@@ -1,0 +1,27 @@
+% textidote: ignore begin
+\section{Front end}\label{sec:front-end}
+% textidote: ignore end
+
+In the implementation of the design, we use the client-server architecture~\cite{mathiassen2018}.
+The most important element of the architecture is that the server can serve several clients.
+In this architecture, Server Component and Client Component~\cite{mathiassen2018} are analogous to the `back end' and
+`front end'.
+Furthermore, the front end handles the view part of the MVC architecture.
+We will use the terms `back-end' and `front-end' for a few reasons:
+
+\begin{itemize}
+    \item Most importantly, in modern front end architecture, there are common optimization features that regard
+    components that are rendered in the server rather than on the client.
+    These are also called `server components' why using the term for both the front end and for the components of the
+    front end would give rise to confusion.
+    \item Secondly, in modern language, the terms `back-end' and `front-end' are more widely used.
+    More readers will therefore have an easier time following the section if these are used.
+\end{itemize}
+
+In this section, we will show some features of the front end, hereby showcase the most important functions and
+components and some libraries used.
+
+\input{front-end/front-end-framework}
+\input{front-end/libraries}
+\input{front-end/data-visualization}
+\input{front-end/important-functions}

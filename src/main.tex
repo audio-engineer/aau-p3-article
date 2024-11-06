@@ -41,9 +41,12 @@
 \addbibresource{main.bib}
 \addbibresource{system-choice/software-requirements-specification.bib}
 \addbibresource{introduction/nova.bib}
-\addbibresource{miscellaneous/data-visualization.bib}
-\addbibresource{miscellaneous/state-of-the-art.bib}
+\addbibresource{front-end/data-visualization.bib}
+\addbibresource{state-of-the-art/google-analytics.bib}
 \addbibresource{testing-and-evaluation/testing.bib}
+\addbibresource{front-end/front-end-framework.bib}
+\addbibresource{back-end/database.bib}
+\addbibresource{back-end/back-end-framework.bib}
 
 % Document
 \title{}
@@ -65,6 +68,9 @@
 
 \begin{document}
     \pagenumbering{roman}
+    % textidote: ignore begin
+    \input{styles/index}
+    % textidote: ignore end
 
     % Title
     \maketitle
@@ -76,9 +82,8 @@
     % \makeaaupreface{This is the preface.}
 
     % Main Content
+
     % textidote: ignore begin
-
-
     \chapter{Introduction and Analysis}\label{ch:introduction-and-analysis}
     % textidote: ignore end
     \pagenumbering{arabic}
@@ -89,13 +94,14 @@
     \input{application-domain-analysis/index}
     \input{design/index}
 
-
     % textidote: ignore begin
-
-
     \chapter{Implementation}\label{ch:implementation}
     % textidote: ignore end
-    \input{miscellaneous/index}
+
+    \input{state-of-the-art/index}
+    \input{front-end/index}
+    \input{back-end/index}
+    \input{technologies/index}
 
     % textidote: ignore begin
     \chapter{Testing and evaluation}\label{ch:testing-and-evaluation}
