@@ -1,0 +1,118 @@
+\subsection{Functions}\label{subsec:functions}
+
+In this section we will analyze the functions of the system.
+There are four different function types, hereby Update, Signal, Read and Compute~\cite{mathiassen2018}.
+In short, the different function types have the following meanings:
+
+\begin{itemize}
+    \item \textbf{Update} functions are initiated by a problem domain event and changes state.
+    \item \textbf{Signal} functions are initiated by a change in the state of a model and react accordingly.
+    \item \textbf{Read} functions are initiated by an actor and retrieves and displays relevant information about a
+    model.
+    \item \textbf{Compute} functions are initiated by an actor when there is a need for information processing, data
+    transformation or calculation and displays the result.
+\end{itemize}
+
+There are also four different complexities, hereby Simple, Medium, Complex and Very complex~\cite{mathiassen2018}.
+In short, the different function complexities have the following meanings:
+
+\begin{itemize}
+    \item \textbf{Simple} functions perform straightforward operations on a single attribute of an object.
+    \item \textbf{Medium} functions create and manipulate single objects.
+    \item \textbf{Complex} functions involve interaction between multiple objects.
+    They may also have conditional logic.
+    \item \textbf{Very complex} functions have several goals and involve several objects and processes.
+    They also have branching and multiple decision capabilities among others.
+\end{itemize}
+
+In Table~\ref{tab:functions} are all non-trivial functions outlined.
+For clarity, we define trivial functions to be basic utility functions and one-line functions, such as getter-functions.
+All of these functions are derived from a combination of the use-cases section in Section~\ref{subsec:use-cases},
+the section about actors in Section~\ref{subsec:actors}, the event table in Section~\ref{subsec:event-table} and the
+section about classes in Section~\ref{subsec:classes-objects-and-structure}.
+
+\begin{table}[h]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{ccc}
+            \toprule
+            \textbf{Function name}
+            & \textbf{Type}
+            & \textbf{Complexity}
+            \\ \midrule
+            Find user information
+            & Read
+            & Simple
+            \\ \midrule
+            Find products by category
+            & Read
+            & Medium
+            \\ \midrule
+            Create user session
+            & Update
+            & Medium
+            \\ \midrule
+            Validate user session
+            & Compute
+            & Medium
+            \\ \midrule
+            Format data
+            & Compute
+            & Complex
+            \\ \midrule
+            Validate and process CSV file
+            & Compute
+            & Very complex
+            \\ \bottomrule
+        \end{tabular}%
+    }
+    \caption{Table of all functions and their respective assigned types and complexities.
+    Trivial functions are excluded.
+    }\label{tab:functions}
+\end{table}
+
+The~\textit{Validate and process CSV file} function is classified as very complex due to the number of different
+sub-functions it contains.
+In Table~\ref{tab:functions-validate-and-process-csv-file} all non-trivial sub-functions regarding
+the~\textit{Validate and process CSV file} function are further clarified.
+
+\begin{table}[h]
+    \centering
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{ccc}
+            \toprule
+            \textbf{Function name}
+            & \textbf{Type}
+            & \textbf{Complexity}
+            \\ \midrule
+            Validate CSV file type
+            & Read
+            & Simple
+            \\ \midrule
+            Handle exceptions
+            & Signal
+            & Simple
+            \\ \midrule
+            Save CSV contents
+            & Update
+            & Medium
+            \\ \midrule
+            Create additional meta-attributes
+            & Update
+            & Medium
+            \\ \midrule
+            Match CSV field to model
+            & Compute
+            & Medium
+            \\ \midrule
+            Check for duplicates
+            & Compute
+            & Medium
+            \\ \bottomrule
+        \end{tabular}%
+    }
+    \caption{Table of all sub-functions and their respective type and complexity regarding the very complex parent
+    function~\textit{Validate and process CSV file} seen in Table~\ref{tab:functions}.
+    Trivial functions are excluded.
+    }\label{tab:functions-validate-and-process-csv-file}
+\end{table}

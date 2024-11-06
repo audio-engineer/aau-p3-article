@@ -1,8 +1,9 @@
-% textidote: ignore begin
 \subsection{Actors}\label{subsec:actors}
-% textidote: ignore end
+
 An actor is a person, system, or external entity that interacts with the system~\cite{mathiassen2018}.
 In this section, we will identify the actors that interact with the system and describe their roles and goals.
+The relevant actors are the owner as seen in Figure~\ref{fig:actor-owner}, the barista as seen in
+Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cognito}.
 
 \begin{figure}[H]
     \noindent
@@ -30,20 +31,20 @@ In this section, we will identify the actors that interact with the system and d
     \textbf{Examples:} One of the owners logs into the system on wednesday morning to prepare for the upcoming days.
     Their goal is to ensure that the café is well-staffed and that they have stocked up the right amount of baked goods
     for what they think will be a busy few days.
-    Using the system, they can:
+    Using the system, they can
 
     \begin{itemize}
-        \item Check hourly sales data from the previous week to predict how many customers that will
+        \item Check hourly sales data from the previous week to predict how many customers will
         visit the café.
         \item Optimize the schedule of the employees based on the predicted number of customers.
         \item Analyze the product demand to ensure that they have enough baked goods in stock.
     \end{itemize}
     \noindent
-    \rule{\textwidth}{0.4pt}\label{fig:actor-owner}
-\end{figure}
+    \rule{\textwidth}{0.4pt}
 
-Figure~\ref{fig:actor-owner}: Actor specifications of the owner actor.
-\pagebreak
+    \caption{Actor specifications of the owner actor.
+    }\label{fig:actor-owner}
+\end{figure}
 
 \begin{figure}[H]
     \noindent
@@ -79,11 +80,11 @@ Figure~\ref{fig:actor-owner}: Actor specifications of the owner actor.
     They navigate to the upload button and select the file they want to upload.
 
     \noindent
-    \rule{\textwidth}{0.04pt}\label{fig:actor-barista}
-\end{figure}
+    \rule{\textwidth}{0.04pt}
 
-Figure~\ref{fig:actor-barista}: Actor specifications of the barista actor.
-\newline
+    \caption{Actor specifications of the barista actor.
+    }\label{fig:actor-barista}
+\end{figure}
 
 \begin{figure}[H]
     \noindent
@@ -106,16 +107,17 @@ Figure~\ref{fig:actor-barista}: Actor specifications of the barista actor.
     \newline
 
     \noindent
-    \textbf{Example 1:} When a user logs into the system using their username and password the cognito actor
+    \textbf{Example 1:} When a user logs into the system using their username and password, the cognito actor
     authenticates the user and provides the system with the user's identity.
     \newline
 
     \noindent
-    \textbf{Example 2:} When a user provide the system with an invalid username or password the cognito actor
+    \textbf{Example 2:} When a user provides the system with an invalid username or password, the cognito actor
     denies the user access to the system and gives them an error message.
 
     \noindent
-    \rule{\textwidth}{0.4pt}\label{fig:actor-cognito}
-\end{figure}
+    \rule{\textwidth}{0.4pt}
 
-Figure~\ref{fig:actor-cognito}: Actor specifications of the cognito actor.
+    \caption{Actor specifications of the cognito actor.
+    }\label{fig:actor-cognito}
+\end{figure}
