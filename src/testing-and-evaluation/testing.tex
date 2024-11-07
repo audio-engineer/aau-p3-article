@@ -14,6 +14,13 @@ it is here most of the critical functionality is.
 When creating unit tests, the authors chose to follow the~\acrfull{aaa} pattern, also called the Build Operate
 Check pattern~\cite{clean-code}.
 
+\subsection{Unit testing}\label{subsec:unit-tests}
+
+The authors have chosen that for all code, if a test is made, it must pass before some functionality can be
+deemed completed.
+This means that it is common to all tests that they must pass when code is pushed to our main branch.
+Therefore, we have a 100\% pass rate for the tests made, but this does not mean that we
+have 100\% test coverage, as that was deemed outside the scope of this project.
 
 \begin{lstlisting}[
     label={lst:aaa-test},
@@ -32,8 +39,105 @@ Check pattern~\cite{clean-code}.
     }
 \end{lstlisting}
 
-As seen in listing~\ref{lst:aaa-test}, to use the~\acrshort{aaa} pattern,
+As seen in Listing~\ref{lst:aaa-test}, to use the~\acrshort{aaa} pattern,
 one would first set some state to a known state.
 Then you act on the state and transform it through some function, also called unit.
 We can finally assert that we get the expected state from the transformation, assert can be seen
 as the test passing if the expression returns true, and failing if false.
+
+The software solution developed for this project is based on the~\acrfull{mvc} architecture.
+Both the model and controller are part of the backend, and because the backend is a Java program,
+the spring-framework is used.
+For testing of our view, which is our frontend build as a node project, we have tested through usability tests,
+see Section~\ref{subsec:usability-tests}.
+By using Spring, we also get many high quality tools to test the code through Spring Test with JUnit.
+
+Because there is a need for persistent storage, we have an SQL database as explained in Chapter~\ref{ch:implementation}.
+This is a critical part of the software solution, so there was a need to test that the database is configured
+correctly, and that it is possible to write to the database through the~\acrfull{jpa}.
+
+To test the database configuration, a unit test was made.
+%todo Fix this code snippet, this is an important part of our code and i think we should show it.
+\begin{lstlisting}[
+    label={lst:database-order-test},
+    caption={A codesnippet of the database order model test},
+    captionpos=b,
+]
+@Test
+final void orderSaveTest() {
+  final Collection<Order> orders = new HashSet<>(2);
+
+  orders.add(ORDER);
+
+  orderRepository.save(ORDER);
+
+  assertThat(orders).contains(ORDER);
+}
+\end{lstlisting}
+
+In Listing~\ref{lst:database-order-test}, we show how one of the order tests are made, in the specific code shown,
+we have a valid order, ORDER\@.
+This is a relatively small unit to test, but it does test an important feature that will be used many times
+during normal operations.
+
+Another more complex test case the authors also deemed important is the controller test, specifically when
+the backend receives a POST request on the /api/orders endpoint.
+The endpoint is used to upload order data as a csv file, for more information as explained in
+Chapter~\ref{ch:implementation}.
+The goal of the endpoint is to populate the database with the order data, and to do this safely we need
+to make sure that all the data received is valid data for the Order model.
+This is the reason that we created a validator, and to test it we also created the test in
+Listing~\ref{lst:order-controller-test}.
+
+\begin{lstlisting}[
+    label={lst:order-controller-test},
+    caption={Order Controller test},
+    captionpos=b,
+]
+class OrderControllerTests {
+  /// [MockMvc] instance
+  @Autowired private MockMvc mockMvc;
+
+  /// `orders.csv` file
+  @Value("classpath:orders.csv")
+  private Resource resource;
+
+  @Test
+  @SuppressWarnings("PMD.LawOfDemeter")
+  final void testUploadValidFileShouldReturnOk() throws Exception {
+    final byte[] ordersCsvFile = Files.readAllBytes(resource.getFile().toPath());
+
+    final MockMultipartFile mockMultipartFile =
+        new MockMultipartFile(
+            "orders",
+            SupportedFiles.ORDERS_CSV.getFileNamePrefix(),
+            "text/csv",
+            ordersCsvFile
+        );
+
+    final MockHttpServletResponse response =
+        mockMvc
+            .perform(
+                MockMvcRequestBuilders.multipart("/api/orders")
+                    .file(mockMultipartFile)
+                    .contentType(MediaType.MULTIPART_FORM_DATA))
+            .andReturn()
+            .getResponse();
+
+    assertThat(response.getStatus()).isEqualTo(200);
+  }
+}
+\end{lstlisting}
+
+In this test, we make use of Spring utilities for creating and performing http request in a test
+environment.
+This test receives the mockMultiPartFile, which is a valid csv file, and it is then expected that the
+upload should succeed and send an http status code which indicates success,
+which is also known as status code 200.
+
+Many more tests have been made, but these two examples should show the kind of tests that are
+present on the backend to test the functionality and ensure correct behavior in a
+production environment.
+% textidote: ignore begin
+\subsection{Usability testing}\label{subsec:usability-tests}
+% textidote: ignore end
