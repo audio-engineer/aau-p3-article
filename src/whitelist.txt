@@ -32,4 +32,6 @@ H2
 npm
 Htwo
 ResponseEntity
+api
+mockMultiPartFile
 csv
