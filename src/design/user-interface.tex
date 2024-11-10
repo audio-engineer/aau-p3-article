@@ -1,6 +1,4 @@
-% textidote: ignore begin
 \section{User interface}\label{sec:user-interface}
-% textidote: ignore end
 
 When designing the user interface, the group used an iterative approach.
 This means that every iteration of the design was tested and evaluated by the group members or by other groups.
@@ -15,13 +13,12 @@ From those ideas, the group agreed on a number of key features that the user int
 Everyone agreed that the final interface should be in the form of a dashboard, and that the data from
 the~\acrshort{epos} should be visualized in a form of a chart.
 
-% textidote: ignore begin
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{design-early.png}
-    \caption{Navigation map of the final design.}\label{fig:design-early}
+    \caption{Navigation map of the final design.
+    }\label{fig:design-early}
 \end{figure}
-% textidote: ignore end
 
 The team decided on prioritizing two charts: A bar chart and a heatmap.
 The functionality and choice rationale for these charts are explained in
@@ -46,13 +43,12 @@ charts.
 The total sales page shows a list of all the data without any visualization.
 The user can also see visualization for a specific day from either the dashboard or the total sales page.
 
-% textidote: ignore begin
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{design-navigation-map.png}
-    \caption{An example of an early chart.}\label{fig:navigation-map}
+    \caption{An example of an early chart.
+    }\label{fig:navigation-map}
 \end{figure}
-% textidote: ignore end
 
 \subsection{Lo-fi prototyping}\label{subsec:lo-fi-prototyping}
 
@@ -69,34 +65,47 @@ The design focuses on a single chart at a time with an option to filter
 the data using the calendar view on the bottom.
 The charts can be switched between using the buttons on either side of the chart.
 The calendar on the bottom can be clicked on to filter data for a specific time period.
+The examples in the figure include:
 
-% textidote: ignore begin
+\begin{itemize}
+    \item The login page as seen in Figure~\ref{subfig:lofi-login}.
+    This is the page where the user attempts to log in to the application.
+    \item The upload page as seen in Figure~\ref{subfig:lofi-upload}.
+    This is where the user attempts to upload a CSV file with order data.
+    \item The bar chart and heatmap as seen in Figure~\ref{subfig:lofi-bar} and~\ref{subfig:lofi-heatmap} respectively.
+    These are both components that show the user some data.
+\end{itemize}
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-lofi-login.jpg}
-        \caption{Login page.}\label{subfig:lofi-login}
+        \includegraphics[width=\linewidth]{design-lofi-login}
+        \caption{Login page.
+        }\label{subfig:lofi-login}
     \end{subfigure}
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-lofi-upload.jpg}
-        \caption{Upload page.}\label{subfig:lofi-upload}
+        \includegraphics[width=\linewidth]{design-lofi-upload}
+        \caption{Upload page.
+        }\label{subfig:lofi-upload}
     \end{subfigure}
     \par\medskip
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-lofi-bar.jpg}
-        \caption{Bar chart.}\label{subfig:lofi-bar}
+        \includegraphics[width=\linewidth]{design-lofi-bar}
+        \caption{Bar chart.
+        }\label{subfig:lofi-bar}
     \end{subfigure}
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-lofi-heatmap.jpg}
-        \caption{Heatmap.}\label{subfig:lofi-heatmap}
+        \includegraphics[width=\linewidth]{design-lofi-heatmap}
+        \caption{Heatmap.
+        }\label{subfig:lofi-heatmap}
     \end{subfigure}
-    \caption{Lo-fi prototype}\label{fig:lofi-prototype}
+    \caption{Lo-fi prototype of four components.
+    }\label{fig:lofi-prototype}
 \end{figure}
-% textidote: ignore end
 
 \subsection{Hi-fi prototyping}\label{subsec:hi-fi-prototyping}
 
@@ -115,26 +124,30 @@ It is also impossible to filter the data using the calendar view, as this featur
 The group could not implement the feedback they got for the lo-fi prototype, as the hi-fi prototype was made before
 the feedback was received.
 Instead, the feedback was used to improve the final design.
+The examples in the figure include the bar chart and heatmap as seen in Figure~\ref{subfig:hifi-bar}
+and~\ref{subfig:hifi-heatmap} respectively.
+These are again both components that show the user some data.
 
-% textidote: ignore begin
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.75\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-hifi-bar.png}
-        \caption{Bar chart.}\label{subfig:hifi-bar}
+        \includegraphics[width=\linewidth]{design-hifi-bar}
+        \caption{Bar chart.
+        }\label{subfig:hifi-bar}
     \end{subfigure}
     \par\medskip
     \begin{subfigure}{.75\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{design-hifi-heatmap.png}
-        \caption{Heatmap.}\label{subfig:hifi-heatmap}
+        \includegraphics[width=\linewidth]{design-hifi-heatmap}
+        \caption{Heatmap.
+        }\label{subfig:hifi-heatmap}
     \end{subfigure}
-    \caption{Hi-fi prototype}\label{fig:hifi-prototype}
+    \caption{Hi-fi prototype.
+    }\label{fig:hifi-prototype}
 \end{figure}
-% textidote: ignore end
 
-\subsection{Final design}
+\subsection{Final design}\label{subsec:final-design}
 
 For the final design, the group went back to the hi-fi prototype and made some changes.
 One request change was to show more charts on the dashboard at the same time.

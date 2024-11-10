@@ -1,4 +1,7 @@
+% textidote: ignore begin
 \section{Testing}\label{sec:testing}
+% textidote: ignore end
+
 Testing is an important part of production-grade code.
 It allows the developers to check that parts of the code behave as expected.
 The strictly correct implementation of code testing is~\acrfull{tdd}.
@@ -10,8 +13,8 @@ Time constraints were also considered.
 
 Though~\acrshort{tdd} was not used for this project, there was still a need for testing.
 It was decided that unit tests were going to be implemented with a focus on the backend software, as
-it is here most of the critical functionality is.
-When creating unit tests, the authors chose to follow the~\acrfull{aaa} pattern, also called the Build Operate
+it is there most of the critical functionality is.
+When creating unit tests, the authors decided to follow the~\acrfull{aaa} pattern, also called the Build Operate
 Check pattern~\cite{clean-code}.
 
 \subsection{Unit testing}\label{subsec:unit-tests}
@@ -57,10 +60,12 @@ This is a critical part of the software solution, so there was a need to test th
 correctly, and that it is possible to write to the database through the~\acrfull{jpa}.
 
 To test the database configuration, a unit test was made.
+
 %todo Fix this code snippet, this is an important part of our code and i think we should show it.
+
 \begin{lstlisting}[
     label={lst:database-order-test},
-    caption={A codesnippet of the database order model test},
+    caption={A codesnippet of the database order model test.},
     captionpos=b,
 ]
 @Test
@@ -80,9 +85,9 @@ we have a valid order, ORDER\@.
 This is a relatively small unit to test, but it does test an important feature that will be used many times
 during normal operations.
 
-Another more complex test case the authors also deemed important is the controller test, specifically when
+Another more complex test case the authors also deemed essential is the controller test, specifically when
 the backend receives a POST request on the /api/orders endpoint.
-The endpoint is used to upload order data as a csv file, for more information as explained in
+The endpoint is used to upload order data as a CSV file, for more information as explained in
 Chapter~\ref{ch:implementation}.
 The goal of the endpoint is to populate the database with the order data, and to do this safely we need
 to make sure that all the data received is valid data for the Order model.
@@ -91,7 +96,7 @@ Listing~\ref{lst:order-controller-test}.
 
 \begin{lstlisting}[
     label={lst:order-controller-test},
-    caption={Order Controller test},
+    caption={Order Controller test.},
     captionpos=b,
 ]
 class OrderControllerTests {
@@ -129,15 +134,16 @@ class OrderControllerTests {
 }
 \end{lstlisting}
 
-In this test, we make use of Spring utilities for creating and performing http request in a test
+In this test, we make use of Spring utilities for creating and performing HTTP request in a test
 environment.
-This test receives the mockMultiPartFile, which is a valid csv file, and it is then expected that the
-upload should succeed and send an http status code which indicates success,
+This test receives the mockMultiPartFile, which is a valid CSV file, and it is then expected that the
+upload should succeed and send an HTTP status code which indicates success,
 which is also known as status code 200.
 
 Many more tests have been made, but these two examples should show the kind of tests that are
 present on the backend to test the functionality and ensure correct behavior in a
 production environment.
+
 % textidote: ignore begin
 \subsection{Usability testing}\label{subsec:usability-tests}
 % textidote: ignore end
