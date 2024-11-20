@@ -1,5 +1,177 @@
-% textidote: ignore begin
 \subsection{Important back-end functions}\label{subsec:important-back-end-functions}
-% textidote: ignore end
 
-% TODO: Add imporant functions and describe them
+Spring Boot supports features such as repositories, services, batch-processing, and more.
+These are the pillars on which our application stands why it is important to outline them.
+Described in the following subsections are examples of these features.
+
+\subsubsection{Controller}
+
+A rest controller in Spring is a class denoted by having the~\texttt{@RestController} annotation.
+A controller is the first point of contact when engaging with the REST API\@.
+In the NOVA Dashboard application, there are two controllers.
+One of them with two post-mappings for the orders-file and order-lines-file respectively, as seen in
+Listing~\ref{lst:controller}.
+This controller handles all HTTP POST requests to the URLs~\url{/api/orders} and~\url{/api/order-lines}.
+It expects files and returns a~\texttt{ResponseEntity} object on success.
+In the listing is only included the route for the order-files as they both are handled almost identically by the
+controller.
+
+\begin{lstlisting}[
+    style=java,
+    caption=A selection of code from the import controller in the application.
+    Dots (...) represent skipped code.,
+    label={lst:controller}]
+@RestController
+@RequestMapping("/api")
+...
+public class ImportController {
+    ...
+    @PostMapping(value = "/orders", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public final ResponseEntity<Map<String, String>> orderHandler(
+        @Valid @RequestParam("orders") final MultipartFile multipartFile) {
+            ...
+    }
+}
+\end{lstlisting}
+
+\subsubsection{Repository}
+
+The repository manages access to the data layer.
+It is an invaluable abstraction that makes the interaction with the database seamless.
+The repository is then further abstracted by extending the JPA repository library.
+The JPA repository has built-in common functionality such as all CRUD related methods and so on.
+This means that we only need to write uncommon queries.
+Furthermore, JPA is able to recognize what functionality such a query will entail,
+why it is also unnecessary to code the functionality ourselves.
+One simply has to define the functionality in the name of the function as seen in Listing~\ref{lst:repository}.
+
+\begin{lstlisting}[
+    style=java,
+    caption=A selection of code from the order repository in the application.,
+    label={lst:repository}]
+public interface OrderRepository extends JpaRepository<Order, Long> {
+   Optional<Order> findByOrderId(UUID orderId);
+}
+\end{lstlisting}
+
+\subsubsection{Model}
+
+The model describes the core data structure of the application.
+In Listing~\ref{lst:model} is included some fields of the model for an order.
+Field examples included are:
+
+\begin{itemize}
+    \item \texttt{`created'} which holds information about the time of creation of the object in the application.
+    \item \texttt{`price'} which is derived from the data uploaded by the user.
+    \item \texttt{`orderId'} which is the unique identifier for the specific object.
+    \item \texttt{`orderLines'} which is the one-to-many mapping rule between the order and order-line models.
+\end{itemize}
+
+Furthermore, the annotations seen in the listing abstracts away common functionality within a model.
+Examples of these are the~\texttt{@Getter} and~\texttt{@Setter} annotations.
+These make it such that it is not necessary to explicitly write getters and setters for each field.
+
+\begin{lstlisting}[
+    style=java,
+    caption=A selection of code from the order model in the application.
+    Dots (...) represent skipped code.,
+    label={lst:model}]
+@Entity
+@Table(name = "order")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Order {
+    @Column(nullable = false)
+    @NonNull
+    private ZonedDateTime created;
+    ...
+    @Column(nullable = false)
+    @NonNull
+    private BigDecimal price;
+    ...
+    @Id
+    @Column(nullable = false)
+    @NonNull
+    private UUID orderId;
+    ...
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderLine> orderLines;
+}
+\end{lstlisting}
+
+\subsubsection{Batch processing}
+
+The batch processing is an integral part of the back end, as it is the most complex.
+In the application, it is mostly used as a tool to validate and save data in parallel.
+As the process is rather complicated, it is abstracted into different functions and classes.
+The process is instantiated in the controller.
+Hereafter the `ImportJobService' service handles the execution.
+The service derives functionality from several configuration classes.
+An example of a such configuration class is seen in Listing~\ref{lst:batch-processing}.
+Herein it can be seen that a Spring Boot Job for orders among others is configured.
+Its main purpose is that it builds a Spring Boot JobBuilder.
+It provides a wrapper step called `orderImportStep' that contains other steps.
+
+\begin{lstlisting}[
+    style=java,
+    caption=A selection of code from the batch processing logic in the application.
+    Dots (...) represent skipped code.,
+    label={lst:batch-processing}]
+@Configuration
+@NoArgsConstructor
+@ToString
+class JobConfiguration {
+    @Bean
+    @OrderImportJob
+    Job orderImportJob(
+        final JobRepository jobRepository, @Qualifier("orderImportStep") final Step orderImportStep) {
+    return new JobBuilder("orderImportJob", jobRepository).start(orderImportStep).build();
+    }
+    ...
+}
+\end{lstlisting}
+
+\subsubsection{Service}
+
+Lastly, the service layer will be described.
+The service layer encapsulates business logic and is the component that coordinates between the other components such as
+controllers, repositories, and models.
+An example of this is the `ImportJobService' as seen in Listing~\ref{lst:service}.
+This service contains four different functions.
+It incorporates the repository at the start, is called by the `ImportController' and uses the functionality from the
+batch processing configurations.
+Specifically, the core functionality in this service is importing, launching and running the import jobs for the
+orders and order-lines files.
+
+\begin{lstlisting}[
+    style=java,
+    caption=A selection of code from the `ImportJobService' in the application.
+    Dots (...) represent skipped code.,
+    label={lst:service}]
+@Service
+@Slf4j
+@ToString
+public class ImportJobService implements ImportJob {
+    private final JobLauncher jobLauncher;
+
+    public ImportJobService(final JobLauncher jobLauncherParameter) {
+        jobLauncher = jobLauncherParameter;
+    }
+
+    private static String writeFileToTempFile(final MultipartFile multipartFile) {
+        ...
+    }
+
+    @Override
+    public void launchImportJob(final Job job, final MultipartFile multipartFile) {
+        ...
+    }
+
+    private void runImportJob(final Job job, final String tempFileAbsolutePath) {
+        ...
+    }
+}
+\end{lstlisting}
