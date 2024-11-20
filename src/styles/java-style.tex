@@ -1,18 +1,44 @@
+\definecolor{background}{RGB}{245,245,245}
+\definecolor{keyword}{RGB}{0,0,205}
+\definecolor{string}{RGB}{220,20,60}
+\definecolor{comment}{RGB}{34,139,34}
+\definecolor{number}{RGB}{138,43,226}
+\definecolor{type}{RGB}{0,100,0}
+\definecolor{annotation}{RGB}{128,128,0}
+\definecolor{method}{RGB}{0,0,139}
+\definecolor{identifier}{RGB}{0,0,0}
+
 \lstdefinestyle{java}{
     language=Java,
-    basicstyle=\ttfamily\small,
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{background},
+    keywordstyle=\bfseries\color{keyword},
+    stringstyle=\color{string},
+    commentstyle=\itshape\color{comment},
+    numberstyle=\tiny\color{number},
+    identifierstyle=\color{identifier},
+    classoffset=1,
+    morekeywords={@Override, @SuppressWarnings, @Deprecated}, % Annotations
+    keywordstyle=[1]\color{annotation},
+    classoffset=0,
+    morekeywords={int, float, double, char, boolean, void, long}, % Types
+    keywordstyle=[2]\bfseries\color{type},
+    classoffset=0,
+    morekeywords={main, System, out, println}, % Methods
+    keywordstyle=[3]\bfseries\color{method},
+    classoffset=0,
     numbers=left,
-    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
     stepnumber=1,
-    numbersep=5pt,
-    backgroundcolor=\color{white},
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=4,
     showspaces=false,
     showstringspaces=false,
-    showtabs=false,
-    tabsize=4,
     breaklines=true,
     breakatwhitespace=true,
     captionpos=b,
-    escapeinside={\%*}{*},
-    morekeywords={super}
+    literate={~}{{$\sim$}}1,
+    escapeinside={/*@}{@*/},
+    moredelim=*[s][\color{comment}\bfseries]{/**}{*/}
 }

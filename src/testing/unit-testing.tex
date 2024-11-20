@@ -9,20 +9,21 @@ Therefore, we have a 100\% pass rate for the tests made, but this does not mean 
 have 100\% test coverage, as that was deemed outside the scope of this project.
 
 \begin{lstlisting}[
+    style=java,
     label={lst:aaa-test},
     caption={Pseudocode that shows the~\acrshort{aaa} pattern for testing.},
     captionpos=b,
 ]
-    test() {
-        // Arrange
-        SomeState someState = new SomeState(foo);
+test() {
+    // Arrange
+    SomeState someState = new SomeState(foo);
 
-        // Act
-        someState.changeState(bar);
+    // Act
+    someState.changeState(bar);
 
-        // Assert
-        assert(someState == expectedState);
-    }
+    // Assert
+    assert(someState == expectedState);
+}
 \end{lstlisting}
 
 As seen in Listing~\ref{lst:aaa-test}, to use the~\acrshort{aaa} pattern,
@@ -47,6 +48,7 @@ To test the database configuration, a unit test was made.
 %todo Fix this code snippet, this is an important part of our code and i think we should show it.
 
 \begin{lstlisting}[
+    style=java,
     label={lst:database-order-test},
     caption={A codesnippet of the database order model test.},
     captionpos=b,
@@ -78,6 +80,7 @@ This is the reason that we created a validator, and to test it we also created t
 Listing~\ref{lst:order-controller-test}.
 
 \begin{lstlisting}[
+    style=java,
     label={lst:order-controller-test},
     caption={Order Controller test.},
     captionpos=b,
