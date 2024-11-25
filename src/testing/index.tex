@@ -1,0 +1,22 @@
+% textidote: ignore begin
+\section{Testing}\label{sec:testing}
+% textidote: ignore end
+
+Testing is an important part of production-grade code.
+It allows the developers to check that parts of the code behave as expected.
+The strictly correct implementation of code testing is~\acrfull{tdd}.
+In software development~\acrshort{tdd}, is a method where you design code around tests.
+This also means that if one were to truly do~\acrshort{tdd}, you would design tests for all functionality
+in your program, and then make code to pass the given tests.
+The authors deemed that extensive testing was not strictly needed for this project.
+Time constraints were also considered.
+
+Though~\acrshort{tdd} was not used for this project, there was still a need for testing.
+It was decided that unit tests were going to be implemented with a focus on the backend software, as
+it is there most of the critical functionality is.
+When creating unit tests, the authors decided to follow the~\acrfull{aaa} pattern, also called the Build Operate
+Check pattern~\cite{clean-code}.
+
+\input{testing/unit-testing}
+\input{testing/integration-testing}
+\input{testing/useability-testing}
