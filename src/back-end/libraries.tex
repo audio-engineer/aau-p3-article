@@ -2,6 +2,40 @@
 \subsection{Back-end libraries}\label{subsec:back-end-libraries}
 % textidote: ignore end
 
-% TODO: Write about interesting depencies in Spring boot
+In the back end we use several libraries and external code and services to enable and leverage the functionality of our
+application.
+Some of the most important ones are mentioned in this section.
 
-% TODO: Write about Cognito integration
+\subsubsection{Amazon Cognito}
+
+For user sign-in and access control, we use Amazon Cognito~\cite{cognito2024}.
+Amazon Cognito provides quality of life features for the sign-up and sign-in process of users.
+By using this service, we eliminate the need to implement our own sign-up and sign-in logic and are able to focus on the
+core mechanics of our application.
+Amazon Cognito seamlessly provides secure access to the website and furthermore enables 2-factor-authentication.
+Users and admins can be added in their interface and will then be able to access the NOVA Dashboard.
+Importantly, as the application is tailored for NOVA specifically, the full access to the Cognito dashboard can be
+granted to the owners of NOVA without issue and further customization.
+
+% textidote: ignore begin
+\subsubsection{Spring Boot dependencies}
+% textidote: ignore end
+
+Lastly, we want to mention some interesting Spring Boot dependencies used in the back-end application.
+These include:
+
+\begin{itemize}
+    \item \textbf{MapStruct:}
+    This dependency, also called~\url{org.mapstruct:mapstruct}, allows for easier mapping between DTOs and
+    entity models.
+    In short, it simplifies complex mapping logic.
+    \item \textbf{Batch Processing:}
+    This dependency, also called~\texttt{spring-boot-starter-batch}, provides an abstraction for batch processing.
+    \item \textbf{Spring Boot Starters:}
+    We use several starters.
+    One of these is the~\texttt{spring-boot-starter-oauth2-resource-server} dependency, which is used for
+    OAuth2 authentication.
+    \item \textbf{CSV Validation:}
+    The~\url{uk.gov.nationalarchives:csv-validator-java-api} dependency is used to validate and process CSV
+    files.
+\end{itemize}
