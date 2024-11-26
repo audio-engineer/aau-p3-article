@@ -36,3 +36,6 @@ api
 mockMultiPartFile
 csv
 MUI
+GitHub
+MapStruct
+DTOs
