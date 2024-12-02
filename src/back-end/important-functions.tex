@@ -62,12 +62,15 @@ Field examples included are:
 
 \begin{itemize}
     \item \texttt{`created'} which holds information about the time of creation of the object in the application.
+
     \item \texttt{`price'} which is derived from the data uploaded by the user.
+
     \item \texttt{`orderId'} which is the unique identifier for the specific object.
+
     \item \texttt{`orderLines'} which is the one-to-many mapping rule between the order and order-line models.
 \end{itemize}
 
-Furthermore, the annotations seen in the listing abstracts away common functionality within a model.
+Furthermore, the annotations seen in the listing abstract away common functionality within a model.
 Examples of these are the~\texttt{@Getter} and~\texttt{@Setter} annotations.
 These make it such that it is not necessary to explicitly write getters and setters for each field.
 
