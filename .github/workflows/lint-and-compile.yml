@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run ChkTeX
-        uses: audio-engineer/chktex-action@dev
+        uses: j2kun/chktex-action@v2.0.0
       - name: Run TeXtidote
         uses: ChiefGokhlayeh/textidote-action@v5
         id: textidote
