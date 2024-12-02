@@ -12,6 +12,7 @@ Furthermore, this section will investigate the different types of data visualiza
 types of visualizations that meet the client's criteria.
 
 \subsubsection{The Raw Data}\label{subsubsec:the-client's-raw-data}
+
 The raw input data merely consists of order data from the client's~\acrshort{epos} system.
 The~\acrshort{epos} system lacks data pre- and post-processing or categorization features, so all data collected by the
 system is persisted directly ``as is'', i.e., orders are saved directly as individual entries in a database.
@@ -21,7 +22,8 @@ Due to the raw and uncategorized, unprocessed nature of the data, it will be nec
 the software solution, but also process it first.
 
 \subsubsection{Requirements}\label{subsubsec:requirements}
-Specific requirements for the type of chart were not mentioned by the client during initial consultations, other than it
+
+The client did not mention specific requirements for the type of chart during initial consultations, other than it
 should be easy to understand even for student workers and other staff.
 Given that none of the staff has knowledge about data science or analysis, it can be deducted that a type of chart will
 have to be used that doesn't require specific skills in data interpretation.
@@ -36,6 +38,7 @@ The data visualization should serve the purpose of letting the client understand
 preparation and inventory sourcing.
 
 \subsubsection{Static vs.\ Dynamic Visualizations}\label{subsubsec:static-vs-dynamic-visualizations}
+
 Data visualizations can broadly be categorized into static and dynamic visualizations.
 Static visualizations, as the name implies, don't have any interactive features that make it possible for the viewer to
 edit or otherwise interactively modify the data and visualization in real time.
@@ -53,21 +56,20 @@ Additionally, since the client's data will eventually be visualized in an intera
 considered to use a dynamic visualization.
 
 \subsubsection{Relevant Visualization Types}\label{subsubsec:relevant-visualization-types}
+
 A handful of visualization types exist, and all of them serve different purposes.
 Visualizations can further broadly be categorized into charts, plots and maps.
 There are four traditional chart types: Bar and line chart, and scatter and box plot~\cite{atlassianChartTypes}.
 Since we already established that we are interested in understanding relationships between data variables, we will now
 focus on chart types that can help us exactly with that.
 
-\pagebreak
-
-% textidote: ignore begin
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
     \includegraphics[width=0.38\textwidth]{scatter-plot}
-    \caption{A typical scatter plot~\cite{atlassianChartTypes}.}\label{fig:scatter-plot}
+    \caption{A typical scatter plot~\cite{atlassianChartTypes}.
+    }\label{fig:scatter-plot}
 \end{wrapfigure}
-% textidote: ignore end
+
 Demonstrations of the relationship between two variables are a typical application of the \textit{scatter plot}
 as seen in Figure~\ref{fig:scatter-plot}, which has two axes, one for each variable.
 The dots on the plot itself are coordinates at which there is a correlation between the variables.
@@ -78,13 +80,13 @@ A high number of dots in a specific area of the plot, or \textit{clustering}, si
 variables at those points.
 Such a plot could help the client analyze if there is any clustering at a specific time of day, or day of the week.
 
-% textidote: ignore begin
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
     \includegraphics[width=0.38\textwidth]{line-chart}
-    \caption{A line chart~\cite{atlassianChartTypes}.}\label{fig:line-chart}
+    \caption{A line chart~\cite{atlassianChartTypes}.
+    }\label{fig:line-chart}
 \end{wrapfigure}
-% textidote: ignore end
+
 Another type of chart is the \textit{line chart} in Figure~\ref{fig:line-chart}, which, again, has two axes: One for
 each variable.
 Line charts are perfect for representing time series data, since they clearly visualize peaks and dips in the data.
@@ -94,13 +96,13 @@ A chart peak would then signify a peak in sales at a given point of time during 
 Furthermore, such a chart could also be used for longer time intervals, such as a whole month, to analyze on which date
 sales peaked or diminished.
 
-% textidote: ignore begin
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
     \includegraphics[width=0.38\textwidth]{heatmap}
-    \caption{A heatmap~\cite{atlassianHeatmaps}.}\label{fig:heatmap}
+    \caption{A heatmap~\cite{atlassianHeatmaps}.
+    }\label{fig:heatmap}
 \end{wrapfigure}
-% textidote: ignore end
+
 The final type of visualization that we will discuss here is the \textit{heatmap} as can be seen in
 Figure~\ref{fig:heatmap}.
 Heatmaps offer 2-dimensional representations of three or more variables and are therefore more flexible and can
