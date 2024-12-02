@@ -49,7 +49,8 @@
 \addbibresource{front-end/front-end-framework.bib}
 \addbibresource{back-end/database.bib}
 \addbibresource{back-end/back-end-framework.bib}
-\addbibresource{design/user-interface.bib}
+\addbibresource{user-interface/heuristics.bib}
+\addbibresource{user-interface/index.bib}
 \addbibresource{technologies/development.bib}
 \addbibresource{back-end/libraries.bib}
 \addbibresource{evaluation/index.bib}
@@ -92,13 +93,21 @@
     % textidote: ignore begin
     \chapter{Introduction and Analysis}\label{ch:introduction-and-analysis}
     % textidote: ignore end
+
     \pagenumbering{arabic}
 
     \input{introduction/index}
     \input{system-choice/index}
     \input{problem-domain-analysis/index}
     \input{application-domain-analysis/index}
-    \input{design/index}
+
+    % textidote: ignore begin
+    \chapter{Design}\label{ch:design}
+    % textidote: ignore end
+
+    \input{openings/design-opening}
+    \input{architectural-design/index}
+    \input{user-interface/index}
 
     % textidote: ignore begin
     \chapter{Implementation}\label{ch:implementation}
