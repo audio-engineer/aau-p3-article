@@ -46,3 +46,9 @@ MapStruct
 DTOs
 Vercel
 aws
+enum
+enums
+OrderStatus
+PaymentStatus
+fromString
+entityManager

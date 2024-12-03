@@ -1,6 +1,4 @@
-% textidote: ignore begin
 \subsection{Unit testing}\label{subsec:unit-tests}
-% textidote: ignore end
 
 The authors have chosen that for all code, if a test is made, it must pass before some functionality can be
 deemed completed.
@@ -39,36 +37,70 @@ For testing of our view, which is our frontend build as a node project, we have 
 see Section~\ref{subsec:usability-tests}.
 By using Spring, we also get many high quality tools to test the code through Spring Test with JUnit.
 
-Because there is a need for persistent storage, we have an SQL database as explained in Chapter~\ref{ch:implementation}.
-This is a critical part of the software solution, so there was a need to test that the database is configured
-correctly, and that it is possible to write to the database through the~\acrfull{jpa}.
-
-To test the database configuration, a unit test was made.
-
-%todo Fix this code snippet, this is an important part of our code and i think we should show it.
+When we are parsing the csv file, an important step is to convert the string value of the field into the desired
+datatype.
+For some data types, this conversion happens automatically, but for custom types the authors need to implement the
+fromString method, as a csv file is stored as text.
+One example of this implementation is for both the OrderStatus and PaymentStatus.
+These two types are enums, and as they are both implemented the same way, it makes sense to only show how one of the
+enums work.
+OrderStatus has been chosen as the example.
+The OrderStatus enum has two valid values~\(ARCHIVED\) and~\(DELETED\).
+It would then make sense to test the conversion for the valid values and at least one invalid value to check that
+invalid data is not accepted.
 
 \begin{lstlisting}[
     style=java,
-    label={lst:database-order-test},
-    caption={A codesnippet of the database order model test.},
+    label={lst:enum-convertion-order_status},
+    caption={Testing the valid and an invalid OrderStatus conversion from a string.},
     captionpos=b,
 ]
-@Test
-final void orderSaveTest() {
-  final Collection<Order> orders = new HashSet<>(2);
+final void testOrderStatusArchivedFromString() {
+  final OrderStatus orderStatus = OrderStatus.fromString("ARCHIVED");
 
-  orders.add(ORDER);
+  assertThat(orderStatus).isEqualTo(OrderStatus.ARCHIVED);
+}
 
-  orderRepository.save(ORDER);
+final void testOrderStatusDeletedFromString() {
+  final OrderStatus orderStatus = OrderStatus.fromString("DELETED");
 
-  assertThat(orders).contains(ORDER);
+  assertThat(orderStatus).isEqualTo(OrderStatus.DELETED);
+}
+
+@SuppressWarnings("TestMethodWithoutAssertion")
+final void testInvalidOrderStatus() {
+  final String invalidOrderStatus = "CREATED";
+
+  assertThatThrownBy(() -> OrderStatus.fromString(invalidOrderStatus))
+      .isInstanceOf(UnknownStatusException.class)
+      .hasMessage("Unknown order status: %s", invalidOrderStatus);
 }
 \end{lstlisting}
 
-In Listing~\ref{lst:database-order-test}, we show how one of the order tests are made, in the specific code shown,
-we have a valid order, ORDER\@.
-This is a relatively small unit to test, but it does test an important feature that will be used many times
-during normal operations.
+In the code snippet~\ref{lst:enum-convertion-order_status}, the code implicitly follows the~\acrshort{aaa} pattern,
+where an OrderStatus is arranged, it is then acted on, by converting from a string.
+Finally, the tests assert that either the correct enum has been generated or an exception has been thrown for invalid
+strings.
+
+An interesting feature of the database setup is lazy loading, which is when the program only retrieves an object from
+the database when it is necessary.
+This is useful to not waste resources communicating with the database unless it is necessary.
+
+\begin{lstlisting}[
+    style=java,
+    label={lst:test-lazy-loading},
+    caption={Testing that an object from the database is not retrieved when not directly accessed.},
+    captionpos=b,
+]
+final void lazyAssociationsTest() {
+  final Order order = orderRepository.findById(ORDER_ID).orElseThrow();
+
+  assertThat(persistenceUnitUtil.isLoaded(order.getOrderLines())).isFalse();
+}
+\end{lstlisting}
+
+As seen in Snippet~\ref{lst:test-lazy-loading}, the test ensures that lazy loading is active, because the order was not
+accessed, but only referenced.
 
 Another more complex test case the authors also deemed essential is the controller test, specifically when
 the backend receives a POST request on the /api/orders endpoint.
@@ -86,15 +118,9 @@ Listing~\ref{lst:order-controller-test}.
     captionpos=b,
 ]
 class OrderControllerTests {
-  /// [MockMvc] instance
-  @Autowired private MockMvc mockMvc;
-
-  /// `orders.csv` file
   @Value("classpath:orders.csv")
   private Resource resource;
 
-  @Test
-  @SuppressWarnings("PMD.LawOfDemeter")
   final void testUploadValidFileShouldReturnOk() throws Exception {
     final byte[] ordersCsvFile = Files.readAllBytes(resource.getFile().toPath());
 
@@ -125,7 +151,3 @@ environment.
 This test receives the mockMultiPartFile, which is a valid CSV file, and it is then expected that the
 upload should succeed and send an HTTP status code which indicates success,
 which is also known as status code 200.
-
-Many more tests have been made, but these two examples should show the kind of tests that are
-present on the backend to test the functionality and ensure correct behavior in a
-production environment.
