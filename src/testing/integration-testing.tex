@@ -1,5 +1,50 @@
-% textidote: ignore begin
 \subsection{Integration testing}\label{subsec:integration-tests}
-% textidote: ignore end
 
-%todo: Write about integration tests.
+When programming projects reach a certain size, multiple parts are usually introduced to solve different problems,
+that would otherwise be more challenging when only using one language or technology.
+For this project, the technology stack that has been chosen is described in Section~\ref{sec:technologies}.
+In short, the choice was made to have a Java backend which exposes a Restful api for the frontend, but also connects to
+a PostgreSQL database.
+As the backend is the only part that communicates with the SQL database, there was a need to test the connection between
+the Java backend and the database, which is what integration testing is for.
+
+There are many ways to test if the connection is configured correctly, but a straightforward approach involves trying
+to write to the database and then asserting that the operation was a success.
+
+\begin{lstlisting}[
+    style=java,
+    label={lst:database-order-test},
+    caption={A codesnippet of the database order model test.},
+    captionpos=b,
+]
+@Test
+final void orderSaveTest() {
+  ...
+  orderRepository.save(ORDER);
+}
+\end{lstlisting}
+
+In Listing~\ref{lst:database-order-test}, we show one of the simpler tests.
+The test relies on the fact that the save method can fail by throwing an exception, which would implicitly fail the
+test.
+
+\begin{lstlisting}[
+    style=java,
+    label={lst:database-persistence-test},
+    caption={A codesnippet of a persistence test},
+    captionpos=b,
+]
+final void orderFindTest() {
+  entityManager.persist(ORDER);
+
+  final Order firstFetched = entityManager.find(Order.class, ORDER.getId());
+
+  final Order secondFetched = entityManager.find(Order.class, ORDER.getId());
+
+  assertThat(firstFetched).isEqualTo(secondFetched);
+}
+\end{lstlisting}
+
+Retrieving from the database is also critical functionality, which is why tests have also been made to verify it works.
+As seen in Listing~\ref{lst:database-persistence-test}, the test first persists an Order to the database through the
+entityManager.
