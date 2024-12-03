@@ -2,4 +2,191 @@
 \subsection{Important front-end functions}\label{subsec:important-front-end-functions}
 % textidote: ignore end
 
-% TODO: Add important components and describe them
+When discussing the front-end functions of the application, there are several key functions that are important to the
+functionality.
+The focus in this section is on the functions related to the charting and data visualization aspects of the application.
+That includes the Nivo library components and the data fetching functions.
+
+% textidote: ignore begin
+\subsubsection{Charting functions}\label{subsubsec:charting-functions}
+% textidote: ignore end
+
+The Nivo library provides a number of options that allows the group to customize the charts to fit the application's
+design.
+Listing~\ref{lst:heatmap-chart} shows one of the components that the group uses to visualize the data, a heatmap.
+Any component can adapt to the layout of the application and the data that is being visualized.
+The only required prop is the data prop, which is an array of objects that contain the data to be visualized.
+Everything else is optional and can be customized to fit the application's design.
+The listing shows the customization done to the heatmap component, with custom margins, padding, colors, legend and 
+tooltip.
+The rest of the components are similar in customization, however some options may differ depending on the component.
+
+\begin{lstlisting}[
+    style=java,
+    caption=Chart visualization in the Heatmap component.
+    Dots (...) represent skipped code.,
+    label={lst:heatmap-chart}]
+const DailyHourlySales = (): ReactElement => {
+  ...
+  return (
+    <ResponsiveHeatMap
+      data={data}
+      margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+      forceSquare={false}
+      xInnerPadding={0.05}
+      yInnerPadding={0.05}
+      borderRadius={6}
+      axisTop={{
+        tickSize: 5,
+        tickPadding: 5,
+      }}
+      axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+      }}
+      colors={{
+        type: "sequential",
+        scheme: "blues",
+      }}
+      emptyColor="#555555"
+      inactiveOpacity={1}
+      legends={[
+        {
+          anchor: "bottom",
+          translateX: 0,
+          translateY: 30,
+          length: 400,
+          thickness: 8,
+          direction: "row",
+          tickPosition: "after",
+          tickSize: 5,
+          tickSpacing: 4,
+          tickOverlap: false,
+          titleAlign: "start",
+          titleOffset: 4,
+        },
+      ]}
+      tooltip={({ cell }: TooltipProps<HeatMapDatum>) => {
+        return (
+          <div
+            style={{
+              background: "white",
+              padding: "9px 12px",
+              border: "1px solid #ccc",
+            }}
+          >
+            <div>
+              {cell.formattedValue} sale(s) on {cell.serieId}s at {cell.data.x}
+            </div>
+          </div>
+        );
+      }}
+    />
+  );
+};
+\end{lstlisting}
+
+% textidote: ignore begin
+\subsubsection{Data fetching functions}\label{subsubsec:data-fetching-functions}
+% textidote: ignore end
+
+The data prop needed for the charting components is fetched from the back end using a REST query.
+Listing~\ref{lst:heatmap-data} shows how the data is fetched for the heatmap component.
+The data is fetched using the~\texttt{useQuery} hook from the React Query library.
+The query key is an array containing the query name and the formatted date range.
+The query function is an asynchronous function that fetches the data from the back end.
+That data is then transformed using the select function to fit the specific format that's needed for the heatmap
+component.
+
+\begin{lstlisting}[
+    style=java,
+    caption=Data fetching in the Heatmap component.
+    Dots (...) represent skipped code.,
+    label={lst:heatmap-data}]
+const DailyHourlySales = (): ReactElement => {
+  const { formattedDateRange } = useDateRange();
+
+  const { data } = useQuery({
+    queryKey: ["dailyHourlySales", formattedDateRange],
+    queryFn: async () => getDailyHourlySales(formattedDateRange),
+    enabled: null !== formattedDateRange.from || null !== formattedDateRange.to,
+    select: transformToHeatmapData,
+  });
+  ...
+\end{lstlisting}
+
+Listing~\ref{lst:data-fetching} shows the function that fetches the data from the back end.
+It creates a query string with the start and end date and sends a GET request to the back end.
+The response is returned as a promise.
+
+\begin{lstlisting}[
+    style=java,
+    caption=GetDailyHourlySales function.,
+    label={lst:data-fetching}]
+const getDailyHourlySales = async (
+  formattedDateRange: FormattedDateRange,
+): Promise<PaginatedResponse<EmbeddedDailyHourlySales>> => {
+  const { from, to } = formattedDateRange;
+
+  const response = await client.get<
+    PaginatedResponse<EmbeddedDailyHourlySales>
+  >(`/api/daily-hourly-sales?startDate=${from}&endDate=${to}`);
+
+  return response.data;
+};
+\end{lstlisting}
+
+Listing~\ref{lst:data-transofrm} shows the function that transforms the data from the back end to the format required
+for the heatmap component.
+The function takes the response from the back end and transforms it into an array of objects.
+Each object contains an ID and an array of data points.
+The data points are objects that contain the x and y values for the heatmap.
+They are sorted by the x value, and the objects are sorted by the ID value.
+The function then returns the array of objects.
+
+\begin{lstlisting}[
+    style=java,
+    caption=TransformToHeatmapData function.,
+    label={lst:data-transofrm}]
+const transformToHeatmapData = (
+  response: PaginatedResponse<EmbeddedDailyHourlySales>,
+): HeatMapSerie<HeatMapDatum, object>[] => {
+  const array = response._embedded.dailyHourlySalesDtoes.map((day) => {
+    const data = day.hourlySales.map((hourly) => ({
+      x: getLocalizedTime(hourly.hour),
+      y: hourly.totalSales,
+    }));
+
+    data.sort(
+      (
+        firstElement: Readonly<HeatMapDatum>,
+        secondElement: Readonly<HeatMapDatum>,
+      ) => {
+        return (
+          dayjs(firstElement.x, "HH:mm").unix() -
+          dayjs(secondElement.x, "HH:mm").unix()
+        );
+      },
+    );
+
+    return {
+      id: getLocalizedDate(day.date),
+      data,
+    };
+  });
+
+  array.sort(
+    (
+      firstElement: HeatMapSerie<HeatMapDatum, object>,
+      secondElement: HeatMapSerie<HeatMapDatum, object>,
+    ) => {
+      return (
+        dayjs(firstElement.id, "DD.MM.YYYY").unix() -
+        dayjs(secondElement.id, "DD.MM.YYYY").unix()
+      );
+    },
+  );
+
+  return array;
+};
+\end{lstlisting}

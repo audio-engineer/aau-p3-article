@@ -52,3 +52,5 @@ OrderStatus
 PaymentStatus
 fromString
 entityManager
+Nivo
+useQuery
