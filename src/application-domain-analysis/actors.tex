@@ -8,6 +8,7 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 \begin{figure}[H]
     \noindent
     \rule{\textwidth}{0.4pt}
+
     \begin{center}
     \noindent
     \textit{\textbf{Owner Actor}}
@@ -15,19 +16,19 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 
     \noindent
     \rule{\textwidth}{0.4pt}
-
     \noindent
-    \textbf{Goal:} The owners interact with the system to gain insights into the performance of their assets.
-    And to make informed decisions based on the data provided.
+
+    \textbf{Goal:} The owners interact with the system to gain insights into the performance of their assets
+    and to make informed decisions based on the data provided.
     \newline
-
     \noindent
+
     \textbf{Characteristics:} The owners are the primary users of the system.
-    The owners are experienced in managing day-to-day operations of the café, but they may not have extensive technical
+    They are experienced in managing day-to-day operations of the café, but they may not have extensive technical
     expertise.
     \newline
-
     \noindent
+
     \textbf{Examples:} One of the owners logs into the system on wednesday morning to prepare for the upcoming days.
     Their goal is to ensure that the café is well-staffed and that they have stocked up the right amount of baked goods
     for what they think will be a busy few days.
@@ -39,9 +40,9 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
         \item Optimize the schedule of the employees based on the predicted number of customers.
         \item Analyze the product demand to ensure that they have enough baked goods in stock.
     \end{itemize}
+
     \noindent
     \rule{\textwidth}{0.4pt}
-
     \caption{Actor specifications of the owner actor.
     }\label{fig:actor-owner}
 \end{figure}
@@ -49,6 +50,7 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 \begin{figure}[H]
     \noindent
     \rule{\textwidth}{0.4pt}
+
     \begin{center}
     \noindent
     \textit{\textbf{Barista Actor}}
@@ -56,32 +58,31 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 
     \noindent
     \rule{\textwidth}{0.4pt}
-
     \noindent
-    \textbf{Goal:} The baristas interact with the system just to get an overview of the sales data and also uploading
+
+    \textbf{Goal:} The baristas interact with the system to get an overview of the sales data and also to upload
     new data to the system.
     \newline
-
     \noindent
+
     \textbf{Characteristics:} The baristas are the employees that work in the café.
     They are responsible for serving the customers and keeping the café clean.
     The baristas are not expected to have any technical expertise.
     \newline
-
     \noindent
+
     \textbf{Example 1:} A barista logs into the system by typing in their credentials.
     When done typing in their credentials, they are presented with the sales data on the dashboard.
     They can see the sales data throughout the weeks and months.
     \newline
-
     \noindent
+
     \textbf{Example 2:} A barista logs into the system by typing in their credentials.
     They are looking to upload new sales data to the system.
     They navigate to the upload button and select the file they want to upload.
 
     \noindent
     \rule{\textwidth}{0.04pt}
-
     \caption{Actor specifications of the barista actor.
     }\label{fig:actor-barista}
 \end{figure}
@@ -89,6 +90,7 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 \begin{figure}[H]
     \noindent
     \rule{\textwidth}{0.4pt}
+
     \begin{center}
         \noindent
         \textit{\textbf{Cognito Actor}}
@@ -96,28 +98,27 @@ Figure~\ref{fig:actor-barista} and Cognito as seen in Figure~\ref{fig:actor-cogn
 
     \noindent
     \rule{\textwidth}{0.4pt}
-
     \noindent
+
     \textbf{Goal:} The cognito actor interacts with the system to authenticate the users.
     \newline
-
     \noindent
+
     \textbf{Characteristics:} Cognito is a third-party service that provides authentication and authorization services.
     The cognito actor is not a person but a system that interacts with the system to authenticate the users.
     \newline
-
     \noindent
+
     \textbf{Example 1:} When a user logs into the system using their username and password, the cognito actor
     authenticates the user and provides the system with the user's identity.
     \newline
-
     \noindent
+
     \textbf{Example 2:} When a user provides the system with an invalid username or password, the cognito actor
     denies the user access to the system and gives them an error message.
 
     \noindent
     \rule{\textwidth}{0.4pt}
-
     \caption{Actor specifications of the cognito actor.
     }\label{fig:actor-cognito}
 \end{figure}

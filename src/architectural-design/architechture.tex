@@ -2,20 +2,6 @@
 \subsection{Architecture}\label{subsec:architecture}
 % textidote: ignore end
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.5\textwidth]{architecture-overview.png}
-    \caption{An overview of the system architecture.
-    }\label{fig:architecture-overview}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{architecture-backend.png}
-    \caption{The back end architecture.
-    }\label{fig:architecture-backend}
-\end{figure}
-
 The diagram in Figure~\ref{fig:architecture-overview} shows a top-level overview of the system architecture.
 It shows how the system is divided into two different development environments, a front end and a back end.
 The front end is using~\url{Next.js}, which is a framework for React.
@@ -32,10 +18,24 @@ are uploaded to the system from the front end.
 This is necessary to handle the sales data from the~\acrshort{epos} system.
 That controller is connected to a batch processor in the data access layer.
 The batch processor is responsible for processing the CSV files from comma separated values to database entries.
-By utilizing a batch processor, the system can handle large amounts of data without compromising performance.
+By using a batch processor, the system can handle large amounts of data without compromising performance.
 The other controllers are connected to repositories in the data access layer.
 These repositories are responsible for handling the database queries.
 Lastly, the data access layer also contains models for the database entries and a logger for logging errors.
 Both the batch processor and the repositories are connected directly to the database.
 The batch processor is inputting data into the database, while the repositories are querying the database for data.
 This keeps the database secure and reliable.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.5\textwidth]{architecture-overview.png}
+    \caption{An overview of the system architecture.
+    }\label{fig:architecture-overview}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{architecture-backend.png}
+    \caption{The back end architecture.
+    }\label{fig:architecture-backend}
+\end{figure}
