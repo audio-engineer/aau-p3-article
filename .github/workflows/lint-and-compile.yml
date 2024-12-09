@@ -1,5 +1,9 @@
 name: Lint And Compile
 on: pull_request
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
 jobs:
   lint-and-compile:
     name: Lint And Compile
@@ -8,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run ChkTeX
-        uses: j2kun/chktex-action@v2.0.0
+        uses: j2kun/chktex-action@v2
       - name: Run TeXtidote
         uses: ChiefGokhlayeh/textidote-action@v5
         id: textidote
