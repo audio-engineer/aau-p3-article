@@ -1,55 +1,73 @@
 \subsection{Criterion}\label{subsec:criterion}
 
 The criterion is a list of requirements for the design of the system.
-It shows the fields of the system that the group has focuses on.
-The specific criteria were taken from a list of standard criteria for software systems~\cite[180]{mathiassen2018}. 
+It shows the fields of the system that the group focuses on.
+The specific criteria are taken from a list of standard criteria for software systems~\cite[180]{mathiassen2018}.
 
 \begin{table}[H]
-    \centering
-    \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{ccccc}
-            \toprule
-            \textbf{Criterion} & \textbf{Very important} & \textbf{Important} &
-            \textbf{Less important} & \textbf{Irrelevant} \\ \midrule
-            Usable & X \\ \midrule
-            Secure & & X \\ \midrule
-            Efficient & & & & X \\ \midrule
-            Correct & X \\ \midrule
-            Reliable & & X \\ \midrule
-            Maintainable & & & X \\ \midrule
-            Testable & & & X \\ \midrule
-            Flexible & & & X \\ \midrule
-            Comprehensible & & X \\ \midrule
-            Reusable & & & & X \\ \midrule
-            Portable & & & & X \\ \midrule
-            Interoperable & & & & X \\ \bottomrule
-        \end{tabular}%
-    }
+    \begin{tabularx}{\textwidth}{ l X X X X }
+        \toprule
+        \textbf{Criterion}
+        & \textbf{Very important}
+        & \textbf{Important}
+        & \textbf{Less important}
+        & \textbf{Irrelevant}
+        \\ \midrule
+        Usable
+        & X
+        \\ \midrule
+        Secure
+        & & X
+        \\ \midrule
+        Efficient
+        & & & & X
+        \\ \midrule
+        Correct
+        & X
+        \\ \midrule
+        Reliable
+        & & X
+        \\ \midrule
+        Maintainable
+        & & & X
+        \\ \midrule
+        Testable
+        & & & X
+        \\ \midrule
+        Flexible
+        & & & X
+        \\ \midrule
+        Comprehensible
+        & & X
+        \\ \midrule
+        Reusable
+        & & & & X
+        \\ \midrule
+        Portable
+        & & & & X
+        \\ \midrule
+        Interoperable
+        & & & & X
+        \\ \bottomrule
+    \end{tabularx}
+    \caption{Overview of the criteria and their importance.
+    }\label{tab:criterion}
 \end{table}
 
-% textidote: ignore begin % complains about "important" being repeatd
-The two most important criteria for the system are that it is correct and usable.
-% textidote: ignore end
-The system must be correct, because system must work as intended.
+As seen in Table~\ref{tab:criterion}, the two most vital criteria for the system are that it is correct and usable.
+The system must be correct because it must work as intended.
 That means that the group has to fulfil all the requirements that they have set for the system.
-The system must also be usable, because the system is intended for café workers, that may not have experience with
+The system must also be usable because the system is intended for café workers that may not have experience with
 analytical systems before.
-% textidote: ignore begin
 Security, reliability, and comprehensibility are also important to the system.
-% textidote: ignore end
-Since the system is dealing with sensitive sales data, it is vital that the system is secure.
-It needs to be reliable, because the system is intended to be used in a business setting, where the system must be 
+Since the system is dealing with sensitive sales data, it is necessary that the system is secure.
+It needs to be reliable because the system is intended to be used in a business setting, where the system must be
 available when needed.
 Comprehensibility is needed for the same reason as usability.
 
-% textidote: ignore begin
-Maintainability, testability, and flexibility are less important, because they are not directly related to the
+Maintainability, testability, and flexibility are less relevant because they are not directly related to the
 functionality of the system.
-% textidote: ignore end
-The group did make sure to keep these criteria in mind when designing the system.
 
-The system is not efficient, because the group is not looking to profit from the system.
-Reusability, portability, and interoperability are also irrelevant, because the system is not designed to be used by
+The system is not efficient because the group is not looking to profit from the system.
+Reusability, portability, and interoperability are also irrelevant because the system is not designed to be used by
 other businesses.
-However, if another business is using the same~\acrshort{epos} system as Nova café is using, the system should in
-theory work with that business.

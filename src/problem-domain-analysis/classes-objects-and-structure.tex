@@ -2,8 +2,8 @@
 \subsection{Classes, Objects and Structure}\label{subsec:classes-objects-and-structure}
 % textidote: ignore end
 
-In this section the classes, objects and structure of the proposed solution will be explored, this
-will help get a more detail understanding of how the system should function in relation to the problem at hand.
+In this section the classes, objects and structure of the proposed solution will be explored.
+This will help get a more detailed understanding of how the system should function in relation to the problem at hand.
 
 % textidote: ignore begin
 \subsubsection{Classes and Objects}\label{subsubsec:classes-and-objects}
@@ -13,32 +13,37 @@ To understand the classes that are relevant for the issues NOVA café is facing,
 a general description of the classes is given in Table~\ref{tab:class-table}.
 
 \begin{table}[H]
-    \centering
-    \begin{tabular} { m{2.5cm} m{10cm} }
+    \begin{tabularx}{\textwidth}{ l X }
         \toprule
-        \textbf{Classes} & \textbf{Description} \\
-        \midrule
-        User & The user class is a superclass that will keep the
+        \textbf{Classes}
+        & \textbf{Description}
+        \\ \midrule
+        User
+        & The user class is a superclass that will keep the
         basic functionality that a user should have.
-        Our users are defined as the owners and other staff employed by NOVA café. \\
-        \midrule
-        Admin & An admin shares most functionality with other user classes,
+        Our users are defined as the owners and other staff employed by NOVA café.
+        \\ \midrule
+        Admin
+        & An admin shares most functionality with other user classes,
         but has the highest privileges in the system.
-        This means that any admin can create and delete users from the system. \\
-        \midrule
-        Employee & An employee is a low privilege user class
+        This means that any admin can create and delete users from the system.
+        \\ \midrule
+        Employee
+        & An employee is a low privilege user class
         that only has access to upload data to the server and
-        view the generated statistics and diagrams. \\
-        \midrule
-        Order & In this context, an order is a customer order,
-        that means to buy any of the café's products an order must be created
-        for the desired products. \\
-        \midrule
-        Product & A product is anything that the café sells,
-        this could be coffee, food, wine and all other products that
-        the café exchanges for money. \\
-        \bottomrule
-    \end{tabular}
+        view the generated statistics and diagrams.
+        \\ \midrule
+        Order
+        & In this context, an order is a customer order.
+        To buy any of the café's products, an order must be created
+        for the desired products.
+        \\ \midrule
+        Product
+        & A product is anything that the café sells.
+        Examples include coffee, food, wine and all other products that
+        the café exchanges for money.
+        \\ \bottomrule
+    \end{tabularx}
     \caption{A table describing the different classes.
     }\label{tab:class-table}
 \end{table}

@@ -3,20 +3,34 @@
 For a better understanding of how our solution will apply to the problem, we will in this section analyze
 the use cases for the different action one can make in our solution.
 
-\begin{table}
-    \centering
-    \begin{tabularx}{0.7\textwidth}{ c X X X }
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{ l X X X }
         \toprule
-        \textbf{Use Case}& \textbf{Owner}& \textbf{Barista}& \textbf{Cognito}\\
-        \midrule
-        Login & \checkmark& \checkmark& \checkmark\\
-        \midrule
-        File uploading& \checkmark& \checkmark&\\
-        \midrule
-        Diagram viewing& \checkmark& \checkmark&\\
-        \midrule
-        Account handling& \checkmark&& \checkmark\\
-        \bottomrule
+        \textbf{Use Case}
+        & \textbf{Owner}
+        & \textbf{Barista}
+        & \textbf{Cognito}
+        \\ \midrule
+        Login
+        & {\checkmark}
+        & {\checkmark}
+        & {\checkmark}
+        \\ \midrule
+        File uploading
+        & {\checkmark}
+        & {\checkmark}
+        &
+        \\ \midrule
+        Diagram viewing
+        & {\checkmark}
+        & {\checkmark}
+        &
+        \\ \midrule
+        Account handling
+        & {\checkmark}
+        &
+        & {\checkmark}
+        \\ \bottomrule
     \end{tabularx}
     \caption{Use cases for Owner, Barista, and Cognito.
     }\label{tab:actors-tabel}
@@ -29,7 +43,6 @@ the use cases for the different action one can make in our solution.
 Login is an active action from a barista or an owner, where they provide a username/mail and a password.
 This action is then handled by Cognito, which verifies the credentials and responds with an error or a temporary token.
 The token is then used as a prerequisite for other actions.
-
 The Login action can be visualized through Figure~\ref{fig:cognito-conditional}
 
 \begin{figure}[H]
@@ -44,10 +57,10 @@ The Login action can be visualized through Figure~\ref{fig:cognito-conditional}
 % textidote: ignore end
 
 Uploading a file is an action actively made by either an owner or a barista.
-The action will be triggered by clicking on an upload button on our webpage and selecting the appropriate file.
+The action will be triggered by clicking on an upload button on the webpage and selecting the appropriate file.
 The server will then validate and parse the file which will result in a success or error,
 which will be shown to the user.
-We have shown how the workflow of uploading a file looks in both Figure~\ref{fig:barista-conditional},
+The workflow of uploading a file is shown in both Figure~\ref{fig:barista-conditional},
 and Figure~\ref{fig:owner-conditional}.
 
 \begin{figure}[H]
@@ -75,6 +88,6 @@ The use case for account handling can be seen in Figure~\ref{fig:owner-condition
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{ada-owner}
-    \caption{Account handling A diagram showing an owner actors use-case.
+    \caption{A diagram showing an owner actors use-case.
     }\label{fig:owner-conditional}
 \end{figure}
