@@ -63,15 +63,32 @@ There are four traditional chart types: Bar and line chart, and scatter and box 
 Since we already established that we are interested in understanding relationships between data variables, we will now
 focus on chart types that can help us exactly with that.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.38\textwidth]{scatter-plot}
-    \caption{A typical scatter plot~\cite{atlassianChartTypes}.
-    }\label{fig:scatter-plot}
-\end{wrapfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{scatter-plot}
+        \caption{A scatter plot~\cite{atlassianChartTypes}.
+        }\label{subfig:scatter-plot}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{line-chart}
+        \caption{A line chart~\cite{atlassianChartTypes}.
+        }\label{subfig:line-chart}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{heatmap}
+        \caption{A heatmap~\cite{atlassianHeatmaps}.
+        }\label{subfig:heatmap}
+    \end{subfigure}
+    \caption{Different visualization types.
+    }\label{subfig:visualization-types}
+\end{figure}
 
 Demonstrations of the relationship between two variables are a typical application of the \textit{scatter plot}
-as seen in Figure~\ref{fig:scatter-plot}, which has two axes, one for each variable.
+as seen in Figure~\ref{subfig:scatter-plot}, which has two axes, one for each variable.
 The dots on the plot itself are coordinates at which there is a correlation between the variables.
 In the case of the café, such a plot could be used to analyze the sales vs.\ time of day or sales vs.\ day of the week
 relationships.
@@ -80,14 +97,7 @@ A high number of dots in a specific area of the plot, or \textit{clustering}, si
 variables at those points.
 Such a plot could help the client analyze if there is any clustering at a specific time of day, or day of the week.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-    \centering
-    \includegraphics[width=0.38\textwidth]{line-chart}
-    \caption{A line chart~\cite{atlassianChartTypes}.
-    }\label{fig:line-chart}
-\end{wrapfigure}
-
-Another type of chart is the \textit{line chart} in Figure~\ref{fig:line-chart}, which, again, has two axes: One for
+Another type of chart is the \textit{line chart} in Figure~\ref{subfig:line-chart}, which, again, has two axes: One for
 each variable.
 Line charts are perfect for representing time series data, since they clearly visualize peaks and dips in the data.
 If we, again, want to visualize the relationship between sales and time of day, sales could be plotted on the y-axis,
@@ -96,18 +106,11 @@ A chart peak would then signify a peak in sales at a given point of time during 
 Furthermore, such a chart could also be used for longer time intervals, such as a whole month, to analyze on which date
 sales peaked or diminished.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-    \centering
-    \includegraphics[width=0.38\textwidth]{heatmap}
-    \caption{A heatmap~\cite{atlassianHeatmaps}.
-    }\label{fig:heatmap}
-\end{wrapfigure}
-
 The final type of visualization that we will discuss here is the \textit{heatmap} as can be seen in
-Figure~\ref{fig:heatmap}.
+Figure~\ref{subfig:heatmap}.
 Heatmaps offer 2-dimensional representations of three or more variables and are therefore more flexible and can
 potentially give more insight into the data at hand.
-Figure~\ref{fig:heatmap} shows a typical heatmap, where the months of the year are mapped along the y-axis, while the
+Figure~\ref{subfig:heatmap} shows a typical heatmap, where the months of the year are mapped along the y-axis, while the
 x-axis shows the daily precipitation.
 The third variable, namely the amount or intensity of precipitation, is the color gradient of the blue cells.
 A darker color is associated with higher amounts of precipitation, while a lighter color with fewer amounts.
