@@ -8,6 +8,13 @@ The front end is using~\url{Next.js}, which is a framework for React.
 The back end is using Java with Spring Boot.
 It is also connected to a PostgreSQL database.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\textwidth]{architecture-overview.png}
+    \caption{An overview of the system architecture.
+    }\label{fig:architecture-overview}
+\end{figure}
+
 The diagram in Figure~\ref{fig:architecture-backend} shows the back-end architecture.
 It is a lot more detailed than the top-level overview.
 The back end is split in a business layer and a data access layer.
@@ -26,14 +33,7 @@ Both the batch processor and the repositories are connected directly to the data
 The batch processor is inputting data into the database, while the repositories are querying the database for data.
 This keeps the database secure and reliable.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.5\textwidth]{architecture-overview.png}
-    \caption{An overview of the system architecture.
-    }\label{fig:architecture-overview}
-\end{figure}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{architecture-backend.png}
     \caption{The back end architecture.
