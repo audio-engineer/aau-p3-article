@@ -42,7 +42,7 @@
 % Bibliography
 \addbibresource{main.bib}
 \addbibresource{system-choice/software-requirements-specification.bib}
-\addbibresource{introduction/nova.bib}
+\addbibresource{openings/introduction-opening.bib}
 \addbibresource{front-end/data-visualization.bib}
 \addbibresource{state-of-the-art/google-analytics.bib}
 \addbibresource{state-of-the-art/power-bi.bib}
@@ -93,12 +93,16 @@
     % Main Content
 
     % textidote: ignore begin
-    \chapter{Introduction and Analysis}\label{ch:introduction-and-analysis}
+    \chapter{Introduction}\label{ch:introduction}
     % textidote: ignore end
 
     \pagenumbering{arabic}
+    \input{openings/introduction-opening}
 
-    \input{introduction/index}
+    % textidote: ignore begin
+    \chapter{Analysis}\label{ch:analysis}
+    % textidote: ignore end
+
     \input{system-choice/index}
     \input{problem-domain-analysis/index}
     \input{application-domain-analysis/index}
@@ -130,12 +134,19 @@
     \input{evaluation/index}
 
     % textidote: ignore begin
-    \chapter{Discussion \& Conclusion}\label{ch:discussion-conclusion}
+    \chapter{Discussion}\label{ch:discussion}
     % textidote: ignore end
 
-    \input{openings/discussion-conclusion-opening}
-    \input{discussion/index}
-    \input{conclusion/index}
+    \input{openings/discussion-opening}
+    \input{future-development/index}
+    \input{software-requrements-evaluation/index}
+    \input{final-thoughts/index}
+
+    % textidote: ignore begin
+    \chapter{Conclusion}\label{ch:conclusion}
+    % textidote: ignore end
+
+    \input{openings/conclusion-opening}
 
     % Appendix
     \appendix
