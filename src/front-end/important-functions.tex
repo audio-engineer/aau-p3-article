@@ -17,12 +17,12 @@ Listing~\ref{lst:heatmap-chart} shows one of the components that the group uses 
 Any component can adapt to the layout of the application and the data that is being visualized.
 The only required prop is the data prop, which is an array of objects that contain the data to be visualized.
 Everything else is optional and can be customized to fit the application's design.
-The listing shows the customization done to the heatmap component, with custom margins, padding, colors, legend and 
+The listing shows the customization done to the heatmap component, with custom margins, padding, colors, legend and
 tooltip.
 The rest of the components are similar in customization, however some options may differ depending on the component.
 
 \begin{lstlisting}[
-    style=java,
+    style=tsxAndTypescript,
     caption=Chart visualization in the Heatmap component.
     Dots (...) represent skipped code.,
     label={lst:heatmap-chart}]
@@ -99,7 +99,7 @@ That data is then transformed using the select function to fit the specific form
 component.
 
 \begin{lstlisting}[
-    style=java,
+    style=tsxAndTypescript,
     caption=Data fetching in the Heatmap component.
     Dots (...) represent skipped code.,
     label={lst:heatmap-data}]
@@ -120,7 +120,7 @@ It creates a query string with the start and end date and sends a GET request to
 The response is returned as a promise.
 
 \begin{lstlisting}[
-    style=java,
+    style=tsxAndTypescript,
     caption=GetDailyHourlySales function.,
     label={lst:data-fetching}]
 const getDailyHourlySales = async (
@@ -145,7 +145,7 @@ They are sorted by the x value, and the objects are sorted by the ID value.
 The function then returns the array of objects.
 
 \begin{lstlisting}[
-    style=java,
+    style=tsxAndTypescript,
     caption=TransformToHeatmapData function.,
     label={lst:data-transofrm}]
 const transformToHeatmapData = (
