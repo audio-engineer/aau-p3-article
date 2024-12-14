@@ -1,0 +1,60 @@
+\definecolor{background}{RGB}{245,245,245}
+\definecolor{keyword}{RGB}{0,0,205}
+\definecolor{string}{RGB}{220,20,60}
+\definecolor{comment}{RGB}{34,139,34}
+\definecolor{number}{RGB}{138,43,226}
+\definecolor{type}{RGB}{0,100,0}
+\definecolor{annotation}{RGB}{128,128,0}
+\definecolor{method}{RGB}{0,0,139}
+\definecolor{jsx}{RGB}{255,69,0}
+\definecolor{identifier}{RGB}{0,0,0}
+
+\lstdefinelanguage{tsxAndTypescript}{
+    keywords={abstract, any, as, async, await, boolean, break, case, catch, class, const, constructor, continue,
+        debugger, declare, default, delete, do, else, enum, export, extends, false, finally, for, from, function, get,
+        if, implements, import, in, infer, instanceof, interface, is, keyof, let, module, namespace, never, new, null,
+        number, object, of, out, package, private, protected, public, readonly, require, return, set, static, string,
+        super, switch, symbol, this, throw, true, try, type, typeof, undefined, unique, unknown, var, void, while, with,
+        yield},
+        keywordstyle=\bfseries\color{keyword},
+    ndkeywords={Promise, Array, Map, Set, Date, Error, Math, JSON, RegExp, console, document, window},
+    ndkeywordstyle=\bfseries\color{type},
+    identifierstyle=\color{identifier},
+    sensitive=true,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\itshape\color{comment},
+    stringstyle=\color{string},
+    morestring=[b]`,
+    alsoletter={\#},
+    emph={React, JSX, JSXElement, JSXFragment},
+    emphstyle=\color{jsx}\bfseries,
+}
+
+\lstdefinestyle{tsxAndTypescript}{
+    language=tsxAndTypescript,
+    backgroundcolor=\color{background},
+    extendedchars=true,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{keyword},
+    ndkeywordstyle=\bfseries\color{type},
+    identifierstyle=\color{identifier},
+    commentstyle=\itshape\color{comment},
+    stringstyle=\color{string},
+    showstringspaces=false,
+    showspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{number},
+    numbersep=8pt,
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=true,
+    frame=single,
+    rulecolor=\color{black},
+    captionpos=b,
+    aboveskip=10pt,
+    belowskip=10pt,
+    literate={~}{{$~$}}1,
+    escapeinside={/*@}{@*/},
+    moredelim=*[s][\color{comment}\bfseries]{/**}{*/},
+}
