@@ -1,4 +1,6 @@
+% textidote: ignore begin
 \subsection{Integration testing}\label{subsec:integration-tests}
+% textidote: ignore end
 
 When programming projects reach a certain size, multiple parts are usually introduced to solve different problems,
 that would otherwise be more challenging when only using one language or technology.
@@ -7,6 +9,8 @@ In short, the choice was made to have a Java backend which exposes a Restful api
 a PostgreSQL database.
 As the backend is the only part that communicates with the SQL database, there was a need to test the connection between
 the Java backend and the database, which is what integration testing is for.
+
+\subsubsection{Database save test}\label{subsubsec:database-save-integration-test}
 
 There are many ways to test if the connection is configured correctly, but a straightforward approach involves trying
 to write to the database and then asserting that the operation was a success.
@@ -27,7 +31,9 @@ final void orderSaveTest() {
 In Listing~\ref{lst:database-order-test}, we show one of the simpler tests.
 The test relies on the fact that the save method can fail by throwing an exception, which would implicitly fail the
 test.
-
+% textidote: ignore begin
+\subsubsection{Persistence test}\label{subsubsec:persistence-integration-test}
+% textidote: ignore end
 \begin{lstlisting}[
     style=java,
     label={lst:database-persistence-test},

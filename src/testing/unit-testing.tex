@@ -37,6 +37,8 @@ For testing of our view, which is our frontend build as a node project, we have 
 see Section~\ref{subsec:usability-tests}.
 By using Spring, we also get many high quality tools to test the code through Spring Test with JUnit.
 
+\subsubsection{Testing fromString}\label{subsubsec:fromstring-unit-test}
+
 When we are parsing the csv file, an important step is to convert the string value of the field into the desired
 datatype.
 For some data types, this conversion happens automatically, but for custom types the authors need to implement the
@@ -82,6 +84,8 @@ where an OrderStatus is arranged, it is then acted on, by converting from a stri
 Finally, the tests assert that either the correct enum has been generated or an exception has been thrown for invalid
 strings.
 
+\subsubsection{Testing lazy loading}\label{subsubsec:lazy-loading-unit-test}
+
 An interesting feature of the database setup is lazy loading, which is when the program only retrieves an object from
 the database when it is necessary.
 This is useful to not waste resources communicating with the database unless it is necessary.
@@ -102,6 +106,7 @@ final void lazyAssociationsTest() {
 As seen in Snippet~\ref{lst:test-lazy-loading}, the test ensures that lazy loading is active, because the order was not
 accessed, but only referenced.
 
+\subsubsection{Testing the controller}\label{subsubsec:controller-unit-test}
 Another more complex test case the authors also deemed essential is the controller test, specifically when
 the backend receives a POST request on the /api/orders endpoint.
 The endpoint is used to upload order data as a CSV file, for more information as explained in
