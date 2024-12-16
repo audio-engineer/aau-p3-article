@@ -54,3 +54,4 @@ fromString
 entityManager
 Nivo
 useQuery
+Hi-Fi
