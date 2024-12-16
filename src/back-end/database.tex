@@ -7,38 +7,17 @@ A relational database was chosen over a non-relational one due to the choice of 
 imported CSV files.
 In this way of processing, the implementation includes several tables in the database.
 
-A table of all the database tables can be seen in Table~\ref{tab:database-tables}.
-In this table, it is clear that most database tables regard the batch processing.
-The tables `order' and `order\_line' in contrast regards the final storage of user imported CSV files.
+A figure of all the database tables can be seen in Figure~\ref{fig:database-diagram}.
+The tables `order' and `order\_line' regards the final storage of user imported CSV files.
 A non-relational database could also have been used for these, as the interdependencies of these tables are rather
 simple.
 
-\begin{table}[H]
+\begin{figure}[H]
     \centering
-    \begin{tabular}{c}
-        \toprule
-        \textbf{Database tables}
-        \\ \midrule
-        batch\_job\_execution
-        \\ \midrule
-        batch\_job\_execution\_context
-        \\ \midrule
-        batch\_job\_execution\_params
-        \\ \midrule
-        batch\_job\_instance
-        \\ \midrule
-        batch\_step\_execution
-        \\ \midrule
-        batch\_step\_execution\_context
-        \\ \midrule
-        order
-        \\ \midrule
-        order\_line
-        \\ \bottomrule
-    \end{tabular}%
-    \caption{List of all database tables.
-    }\label{tab:database-tables}
-\end{table}
+    \includegraphics[width=.5\textwidth]{database-diagram.jpg}
+    \caption{An overview of the system architecture.
+    }\label{fig:database-diagram}
+\end{figure}
 
 Furthermore, the database is run in its own container.
 This is important as it makes potential maintenance easier, which is good practice in general.
