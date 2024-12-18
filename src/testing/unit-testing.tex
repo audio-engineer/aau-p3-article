@@ -2,9 +2,10 @@
 
 The authors have chosen that for all code, if a test is made, it must pass before some functionality can be
 deemed completed.
-This means that it is common to all tests that they must pass when code is pushed to our main branch.
-Therefore, we have a 100\% pass rate for the tests made, but this does not mean that we
-have 100\% test coverage, as that was deemed outside the scope of this project.
+This means that it is common to all tests that they must pass when code is pushed to the main branch.
+Therefore, the application has a 100\% pass rate for the tests made.
+This does, however, not mean that the application has a 100\% test coverage, as that was deemed outside the scope of
+this project.
 
 \begin{lstlisting}[
     style=java,
@@ -26,26 +27,26 @@ test() {
 
 As seen in Listing~\ref{lst:aaa-test}, to use the~\acrshort{aaa} pattern,
 one would first set some state to a known state.
-Then you act on the state and transform it through some function, also called unit.
-We can finally assert that we get the expected state from the transformation, assert can be seen
-as the test passing if the expression returns true, and failing if false.
+Then one acts on the state and transforms it through some function, also called unit.
+Finally, one can assert the expected state from the transformation.
+Assert can be seen as the test passing if the expression returns true, and failing if false.
 
 The software solution developed for this project is based on the~\acrfull{mvc} architecture.
-Both the model and controller are part of the backend, and because the backend is a Java program,
-the spring-framework is used.
-For testing of our view, which is our frontend build as a node project, we have tested through usability tests,
-see Section~\ref{subsec:usability-tests}.
-By using Spring, we also get many high quality tools to test the code through Spring Test with JUnit.
+Both the model and controller are part of the back end, and because the back end is a Java program,
+the Spring framework is used.
+For testing of the views, which is the front end, testing through usability tests can be done, as seen in
+Section~\ref{subsec:usability-tests}.
+By using Spring, the application has many high quality tools to test the code through Spring Test with JUnit.
 
 \subsubsection{Testing fromString}\label{subsubsec:fromstring-unit-test}
 
-When we are parsing the csv file, an important step is to convert the string value of the field into the desired
+When the CSV file is parsed, an important step is to convert the string value of the field into the desired
 datatype.
 For some data types, this conversion happens automatically, but for custom types the authors need to implement the
-fromString method, as a csv file is stored as text.
+fromString method, as a CSV file is stored as text.
 One example of this implementation is for both the OrderStatus and PaymentStatus.
 These two types are enums, and as they are both implemented the same way, it makes sense to only show how one of the
-enums work.
+enums works.
 OrderStatus has been chosen as the example.
 The OrderStatus enum has two valid values~\(ARCHIVED\) and~\(DELETED\).
 It would then make sense to test the conversion for the valid values and at least one invalid value to check that
@@ -103,17 +104,17 @@ final void lazyAssociationsTest() {
 }
 \end{lstlisting}
 
-As seen in Snippet~\ref{lst:test-lazy-loading}, the test ensures that lazy loading is active, because the order was not
+As seen in Snippet~\ref{lst:test-lazy-loading}, the test ensures that lazy loading is active because the order was not
 accessed, but only referenced.
 
 \subsubsection{Testing the controller}\label{subsubsec:controller-unit-test}
 Another more complex test case the authors also deemed essential is the controller test, specifically when
 the backend receives a POST request on the /api/orders endpoint.
-The endpoint is used to upload order data as a CSV file, for more information as explained in
+The endpoint is used to upload order data as a CSV file, as explained in
 Chapter~\ref{ch:implementation}.
-The goal of the endpoint is to populate the database with the order data, and to do this safely we need
+The goal of the endpoint is to populate the database with the order data, and to do this safely, the application needs
 to make sure that all the data received is valid data for the Order model.
-This is the reason that we created a validator, and to test it we also created the test in
+This is the reason that the group created a validator, and to test it the group also created the test in
 Listing~\ref{lst:order-controller-test}.
 
 \begin{lstlisting}[
@@ -151,8 +152,7 @@ class OrderControllerTests {
 }
 \end{lstlisting}
 
-In this test, we make use of Spring utilities for creating and performing HTTP request in a test
-environment.
-This test receives the mockMultiPartFile, which is a valid CSV file, and it is then expected that the
-upload should succeed and send an HTTP status code which indicates success,
+In this test, Spring utilities are used for creating and performing HTTP requests in a test environment.
+This test receives the mockMultiPartFile, which is a valid CSV file.
+It is then expected that the upload should succeed and send an HTTP status code which indicates success,
 which is also known as status code 200.
