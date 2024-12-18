@@ -1,7 +1,7 @@
 \subsection{Use Cases}\label{subsec:use-cases}
 
-For a better understanding of how our solution will apply to the problem, we will in this section analyze
-the use cases for the different action one can make in our solution.
+For a better understanding of how our solution will apply to the problem, in this section will analyze the use cases for
+the different action one can make in our solution.
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{ l X X X }
@@ -40,14 +40,14 @@ the use cases for the different action one can make in our solution.
 \subsubsection{Login}\label{subsubsec:login_usecase}
 % textidote: ignore end
 
-Login is an active action from a barista or an owner, where they provide a username/mail and a password.
+Login is an active action from a barista or an owner, where they provide a username or an e-mail and a password.
 This action is then handled by Cognito, which verifies the credentials and responds with an error or a temporary token.
 The token is then used as a prerequisite for other actions.
 The Login action can be visualized through Figure~\ref{fig:cognito-conditional}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{ada-cognito}
+    \includegraphics[width=0.75\textwidth]{ada-cognito}
     \caption{A diagram showing the Cognito actors use.
     }\label{fig:cognito-conditional}
 \end{figure}
@@ -65,7 +65,7 @@ and Figure~\ref{fig:owner-conditional}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{ada-barista}
+    \includegraphics[width=0.7\textwidth]{ada-barista}
     \caption{A diagram showing a barista actors use-case.
     }\label{fig:barista-conditional}
 \end{figure}
@@ -87,7 +87,7 @@ The use case for account handling can be seen in Figure~\ref{fig:owner-condition
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{ada-owner}
+    \includegraphics[width=0.9\textwidth]{ada-owner}
     \caption{A diagram showing an owner actors use-case.
     }\label{fig:owner-conditional}
 \end{figure}
