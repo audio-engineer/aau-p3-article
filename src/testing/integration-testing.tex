@@ -5,10 +5,10 @@
 When programming projects reach a certain size, multiple parts are usually introduced to solve different problems,
 that would otherwise be more challenging when only using one language or technology.
 For this project, the technology stack that has been chosen is described in Section~\ref{sec:technologies}.
-In short, the choice was made to have a Java backend which exposes a Restful api for the frontend, but also connects to
+In short, the choice was made to have a Java back end which exposes a REST API for the front end, but also connects to
 a PostgreSQL database.
-As the backend is the only part that communicates with the SQL database, there was a need to test the connection between
-the Java backend and the database, which is what integration testing is for.
+As the back end is the only part that communicates with the SQL database, there was a need to test the connection
+between the Java back end and the database, which is what integration testing is for.
 
 \subsubsection{Database save test}\label{subsubsec:database-save-integration-test}
 
@@ -18,7 +18,8 @@ to write to the database and then asserting that the operation was a success.
 \begin{lstlisting}[
     style=java,
     label={lst:database-order-test},
-    caption={A codesnippet of the database order model test.},
+    caption={A code snippet of the database order model test.
+    Dots (...) represent skipped code.},
     captionpos=b,
 ]
 @Test
@@ -28,16 +29,18 @@ final void orderSaveTest() {
 }
 \end{lstlisting}
 
-In Listing~\ref{lst:database-order-test}, we show one of the simpler tests.
+In Listing~\ref{lst:database-order-test} is shown one of the simpler tests.
 The test relies on the fact that the save method can fail by throwing an exception, which would implicitly fail the
 test.
+
 % textidote: ignore begin
 \subsubsection{Persistence test}\label{subsubsec:persistence-integration-test}
 % textidote: ignore end
+
 \begin{lstlisting}[
     style=java,
     label={lst:database-persistence-test},
-    caption={A codesnippet of a persistence test},
+    caption={A code snippet of a persistence test},
     captionpos=b,
 ]
 final void orderFindTest() {
@@ -52,5 +55,5 @@ final void orderFindTest() {
 \end{lstlisting}
 
 Retrieving from the database is also critical functionality, which is why tests have also been made to verify it works.
-As seen in Listing~\ref{lst:database-persistence-test}, the test first persists an Order to the database through the
+As seen in Listing~\ref{lst:database-persistence-test}, the test persists an Order to the database through the
 entityManager.

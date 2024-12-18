@@ -2,16 +2,16 @@
 \subsection{Back-End Libraries}\label{subsec:back-end-libraries}
 % textidote: ignore end
 
-In the back end we use several libraries and external code and services to enable and leverage the functionality of our
+In the back end several libraries and external code and services is used to enable and leverage the functionality of the
 application.
 Some of the most important ones are mentioned in this section.
 
 \subsubsection{Amazon Cognito}
 
-For user sign-in and access control, we use Amazon Cognito~\cite{cognito2024}.
+For user sign-in and access control, Amazon Cognito~\cite{cognito2024} is used.
 Amazon Cognito provides quality of life features for the sign-up and sign-in process of users.
-By using this service, we eliminate the need to implement our own sign-up and sign-in logic and are able to focus on the
-core mechanics of our application.
+By using this service, the need to implement a sign-up and sign-in logic is eliminated while enabling the group to focus
+on the core mechanics of the application.
 Amazon Cognito seamlessly provides secure access to the website and furthermore enables 2-factor-authentication.
 Users and admins can be added in their interface and will then be able to access the NOVA Dashboard.
 Importantly, as the application is tailored for NOVA specifically, the full access to the Cognito dashboard can be
@@ -21,7 +21,7 @@ granted to the owners of NOVA without issue and further customization.
 \subsubsection{Spring Boot dependencies}
 % textidote: ignore end
 
-Lastly, we want to mention some interesting Spring Boot dependencies used in the back-end application.
+Lastly, some interesting Spring Boot dependencies used in the back-end application are mentioned.
 These include:
 
 \begin{itemize}
@@ -34,7 +34,7 @@ These include:
     This dependency, also called~\texttt{spring-boot-starter-batch}, provides an abstraction for batch processing.
 
     \item \textbf{Spring Boot Starters:}
-    We use several starters.
+    Several starters are used.
     One of these is the~\texttt{spring-boot-starter-oauth2-resource-server} dependency, which is used for
     OAuth2 authentication.
 
