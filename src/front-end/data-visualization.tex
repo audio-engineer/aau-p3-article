@@ -13,7 +13,8 @@ types of visualizations that meet the client's criteria.
 
 \subsubsection{The Raw Data}\label{subsubsec:the-client's-raw-data}
 
-The raw input data merely consists of order data from the client's~\acrshort{epos} system.
+The raw input data merely consists of order data from the client's~\acrshort{epos} system,
+as seen in Figure~\ref{fig:nova-csv-data}.
 The~\acrshort{epos} system lacks data pre- and post-processing or categorization features, so all data collected by the
 system is persisted directly ``as is'', i.e., orders are saved directly as individual entries in a database.
 Orders, e.g., include attributes such as transaction time, a unique order ID, the product IDs of the products purchased,
@@ -60,9 +61,9 @@ considered to use a dynamic visualization.
 A handful of visualization types exist, and all of them serve different purposes.
 Visualizations can further broadly be categorized into charts, plots and maps.
 There are four traditional chart types: Bar and line chart, and scatter and box plot~\cite{atlassianChartTypes}.
-Since we already established that we are interested in understanding relationships between data variables, we will now
-focus on chart types that can help us exactly with that.
-Three types of visualizations that can help us understand relationships between variables are the scatter plot, line
+Since it has already been established that we are interested in understanding relationships between data variables,
+the focus will now be on  the chart types that can help exactly with that.
+Three types of visualizations that can help understand relationships between variables are the scatter plot, line
 chart, and heatmap, as seen in Figure~\ref{fig:visualization-types}.
 
 \begin{figure}[H]
@@ -102,13 +103,13 @@ Such a plot could help the client analyze if there is any clustering at a specif
 Another type of chart is the \textit{line chart} in Figure~\ref{subfig:line-chart}, which, again, has two axes: One for
 each variable.
 Line charts are perfect for representing time series data, since they clearly visualize peaks and dips in the data.
-If we, again, want to visualize the relationship between sales and time of day, sales could be plotted on the y-axis,
+If the goal is to visualize the relationship between sales and time of day, sales could be plotted on the y-axis,
 while the time of day would be on the x-axis.
 A chart peak would then signify a peak in sales at a given point of time during a specific day.
 Furthermore, such a chart could also be used for longer time intervals, such as a whole month, to analyze on which date
 sales peaked or diminished.
 
-The final type of visualization that we will discuss here is the \textit{heatmap} as can be seen in
+The final type of visualization that will be discussed here is the \textit{heatmap} as can be seen in
 Figure~\ref{subfig:heatmap}.
 Heatmaps offer 2-dimensional representations of three or more variables and are therefore more flexible and can
 potentially give more insight into the data at hand.
